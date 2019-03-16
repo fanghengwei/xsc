@@ -1,0 +1,130 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-type" class="form-control" name="row[type]" type="number" value="{$row.type}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-city" class="form-control" name="row[city]" type="number" value="{$row.city}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_name" class="form-control" name="row[contact_name]" type="text" value="{$row.contact_name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Phone')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-phone" class="form-control" name="row[phone]" type="text" value="{$row.phone}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Wechat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-wechat" class="form-control" name="row[wechat]" type="text" value="{$row.wechat}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_company')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_company" class="form-control" name="row[agent_company]" type="text" value="{$row.agent_company}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Agent_fee')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-agent_fee" class="form-control" name="row[agent_fee]" type="text" value="{$row.agent_fee}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Arriving_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-arriving_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[arriving_time]" type="text" value="{$row.arriving_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Work_visa_provided')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-work_visa_provided" class="form-control" name="row[work_visa_provided]" type="number" value="{$row.work_visa_provided}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Non_native_acceptable')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-non_native_acceptable" class="form-control" name="row[non_native_acceptable]" type="number" value="{$row.non_native_acceptable}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Housing')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-housing" class="form-control" name="row[housing]" type="number" value="{$row.housing}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Newfield')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-newfield" class="form-control" name="row[newfield]" type="number" value="{$row.newfield}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Salsary_rang_low')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-salsary_rang_low" class="form-control" name="row[salsary_rang_low]" type="number" value="{$row.salsary_rang_low}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Salsary_rang_high')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-salsary_rang_high" class="form-control" name="row[salsary_rang_high]" type="number" value="{$row.salsary_rang_high}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Vacancy')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-Vacancy" class="form-control" name="row[Vacancy]" type="text" value="{$row.Vacancy}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Blacklist')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-blacklist" class="form-control" name="row[blacklist]" type="number" value="{$row.blacklist}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Blacklist_reason')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-blacklist_reason" class="form-control" name="row[blacklist_reason]" type="text" value="{$row.blacklist_reason}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Creater_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-creater_id" data-rule="required" data-source="creater/index" class="form-control selectpage" name="row[creater_id]" type="text" value="{$row.creater_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{$row.create_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-update_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{$row.update_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
