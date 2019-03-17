@@ -10,3 +10,6 @@
 #环境变量文件
 .env
 
+#composer
+composer.lock
+
