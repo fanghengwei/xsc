@@ -4,9 +4,10 @@
 
 #临时文件
 /runtime/*
+/public/uploads/*
 
 #依赖包文件
-/vendor
+/vendor/*
 
 #环境变量文件
 .env
