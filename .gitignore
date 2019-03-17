@@ -1,4 +1,4 @@
-#开发工具的配置文件
+﻿#开发工具的配置文件
 /.idea
 /.vscode
 
@@ -8,12 +8,10 @@
 
 #依赖包文件
 /vendor/*
+/composer.lock
 
 #环境变量文件
 .env
-
-#composer
-/composer.lock
 
 #Mac OS的垃圾
 .DS_Store
