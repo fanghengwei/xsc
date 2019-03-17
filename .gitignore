@@ -1,5 +1,12 @@
-.idea/*
-/runtime
-/vender
+#开发工具的配置文件
+/.idea
+
+#临时文件
+/runtime/*
+
+#依赖包文件
+/vendor
+
+#环境变量文件
 .env
 
