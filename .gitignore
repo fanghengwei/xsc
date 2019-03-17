@@ -1,5 +1,5 @@
 .idea/*
-runtime/*
-
+/runtime
+/vender
 .env
 
