@@ -22,7 +22,17 @@ class Foreignteachers extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\Foreignteachers;
-
+        $this->view->assign("workingStatusList", $this->model->getWorkingStatusList());
+        $this->view->assign("genderList", $this->model->getGenderList());
+        $this->view->assign("typeList", $this->model->getTypeList());
+        $this->view->assign("nationalityList", $this->model->getNationalityList());
+        $this->view->assign("degreeList", $this->model->getDegreeList());
+        $this->view->assign("certificateList", $this->model->getCertificateList());
+        $this->view->assign("visaStatusList", $this->model->getVisaStatusList());
+        $this->view->assign("chineseList", $this->model->getChineseList());
+        $this->view->assign("companyTypeList", $this->model->getCompanyTypeList());
+        $this->view->assign("creditScoreList", $this->model->getCreditScoreList());
+        $this->view->assign("followUpStatusList", $this->model->getFollowUpStatusList());
     }
     
     /**

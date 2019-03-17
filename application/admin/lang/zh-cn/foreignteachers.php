@@ -1,8 +1,30 @@
 <?php
 
 return [
-    'Gender'  =>  '0:female,1:male',
-    'Degree'  =>  '1:High school or below,2:College,3:Bachelor Master,4:Doctor',
-    'Certificate'  =>  '1:TEFL,2:Teacher certificate,3:Others,4:None',
-    'Chinese'  =>  '1:HSK 1,2:HSK 2,3:HSK 3,4:HSK 4,5:HSK 5,6 HSK 6,7None'
+    'Id'  =>  'ID',
+    'Name'  =>  'Name',
+    'Contact_information'  =>  'Contact Information',
+    'Working_status'  =>  'Working Status',
+    'Gender'  =>  'Gender',
+    'Type'  =>  'Type',
+    'Age'  =>  'Age',
+    'Resource'  =>  'Resource',
+    'Nationality'  =>  'Nationality',
+    'Passport'  =>  'Passport No.',
+    'Degree'  =>  'Degree',
+    'Certificate'  =>  'Certificate',
+    'Visa_status'  =>  'Visa Status',
+    'Arriving_time'  =>  'Arriving Time',
+    'Expected_salary'  =>  'Expected Salary',
+    'Chinese'  =>  'Chinese',
+    'Expected_city_1'  =>  'Expected City First',
+    'Expected_city_2'  =>  'Expected City Second',
+    'Company_type'  =>  'Company Type',
+    'Credit_score'  =>  'Credit Score',
+    'Follow_up_status'  =>  'Follow-up Status',
+    'Remarks'  =>  'Remarks',
+    'Attachment_files'  =>  'Attachment',
+    'Creater_idd'  =>  'Creste ID',
+    'Create_time'  =>  'Create Time',
+    'Update_time'  =>  'Update Time'
 ];

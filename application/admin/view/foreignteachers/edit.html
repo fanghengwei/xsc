@@ -3,31 +3,49 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name}">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text" value="{$row.name}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Contact_information')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-contact_information" class="form-control" name="row[contact_information]" type="text" value="{$row.contact_information}">
+            <input id="c-contact_information" data-rule="required" class="form-control" name="row[contact_information]" type="text" value="{$row.contact_information}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Working_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-working_status" class="form-control" name="row[working_status]" type="number" value="{$row.working_status}">
+            
+            <div class="radio">
+            {foreach name="workingStatusList" item="vo"}
+            <label for="row[working_status]-{$key}"><input id="row[working_status]-{$key}" name="row[working_status]" type="radio" value="{$key}" {in name="key" value="$row.working_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Gender')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-gender" class="form-control" name="row[gender]" type="number" value="{$row.gender}">
+                        
+            <select  id="c-gender" data-rule="required" class="form-control selectpicker" name="row[gender]">
+                {foreach name="genderList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.gender"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-type" class="form-control" name="row[type]" type="number" value="{$row.type}">
+                        
+            <select  id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">
+                {foreach name="typeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
@@ -45,103 +63,165 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Nationality')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-nationality" class="form-control" name="row[nationality]" type="number" value="{$row.nationality}">
+                        
+            <select  id="c-nationality" data-rule="required" class="form-control selectpicker" name="row[nationality]">
+                {foreach name="nationalityList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.nationality"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Passport')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-passport" class="form-control" name="row[passport]" type="text" value="{$row.passport}">
+            <input id="c-passport" data-rule="required" class="form-control" name="row[passport]" type="text" value="{$row.passport}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Degree')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-degree" class="form-control" name="row[degree]" type="number" value="{$row.degree}">
+                        
+            <select  id="c-degree" data-rule="required" class="form-control selectpicker" name="row[degree]">
+                {foreach name="degreeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.degree"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Certificate')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-certificate" class="form-control" name="row[certificate]" type="number" value="{$row.certificate}">
+                        
+            <select  id="c-certificate" class="form-control selectpicker" multiple="" name="row[certificate][]">
+                {foreach name="certificateList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.certificate"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Visa_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-visa_status" class="form-control" name="row[visa_status]" type="number" value="{$row.visa_status}">
+            
+            <div class="radio">
+            {foreach name="visaStatusList" item="vo"}
+            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="$row.visa_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Arriving_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-arriving_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[arriving_time]" type="text" value="{$row.arriving_time|datetime}">
+            <input id="c-arriving_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD" data-use-current="true" name="row[arriving_time]" type="text" value="{$row.arriving_time}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Expected_salary')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-expected_salary" class="form-control" name="row[expected_salary]" type="text" value="{$row.expected_salary}">
+            <input id="c-expected_salary" data-rule="required" class="form-control" name="row[expected_salary]" type="text" value="{$row.expected_salary}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Chinese')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-chinese" class="form-control" name="row[chinese]" type="number" value="{$row.chinese}">
+                        
+            <select  id="c-chinese" data-rule="required" class="form-control selectpicker" name="row[chinese]">
+                {foreach name="chineseList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.chinese"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_1')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-expected_city_1" class="form-control" name="row[expected_city_1]" type="number" value="{$row.expected_city_1}">
+            <input id="c-expected_city_1" data-rule="required" class="form-control" name="row[expected_city_1]" type="number" value="{$row.expected_city_1}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_2')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-expected_city_2" class="form-control" name="row[expected_city_2]" type="number" value="{$row.expected_city_2}">
+            <input id="c-expected_city_2" data-rule="required" class="form-control" name="row[expected_city_2]" type="number" value="{$row.expected_city_2}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Company_type')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-company_type" class="form-control" name="row[company_type]" type="number" value="{$row.company_type}">
+                        
+            <select  id="c-company_type" data-rule="required" class="form-control selectpicker" name="row[company_type]">
+                {foreach name="companyTypeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.company_type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Credit_score')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-credit_score" class="form-control" name="row[credit_score]" type="number" value="{$row.credit_score}">
+                        
+            <select  id="c-credit_score" data-rule="required" class="form-control selectpicker" name="row[credit_score]">
+                {foreach name="creditScoreList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.credit_score"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Follow_up_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-follow_up_status" class="form-control" name="row[follow_up_status]" type="number" value="{$row.follow_up_status}">
+            
+            <div class="radio">
+            {foreach name="followUpStatusList" item="vo"}
+            <label for="row[follow_up_status]-{$key}"><input id="row[follow_up_status]-{$key}" name="row[follow_up_status]" type="radio" value="{$key}" {in name="key" value="$row.follow_up_status"}checked{/in} /> {$vo}</label> 
+            {/foreach}
+            </div>
+
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Remarks')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-remarks" class="form-control" name="row[remarks]" type="text" value="{$row.remarks}">
+            <textarea id="c-remarks" data-rule="required" class="form-control " rows="5" name="row[remarks]" cols="50">{$row.remarks}</textarea>
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Creater_id')}:</label>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Attachment_files')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-creater_id" data-rule="required" data-source="creater/index" class="form-control selectpage" name="row[creater_id]" type="text" value="{$row.creater_id}">
+            <div class="input-group">
+                <input id="c-attachment_files" data-rule="required" class="form-control" size="50" name="row[attachment_files]" type="text" value="{$row.attachment_files}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-attachment_files" class="btn btn-danger plupload" data-input-id="c-attachment_files" data-multiple="true" data-preview-id="p-attachment_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-attachment_files" class="btn btn-primary fachoose" data-input-id="c-attachment_files" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-attachment_files"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-attachment_files"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Creater_idd')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-creater_idd" data-rule="required" class="form-control" name="row[creater_idd]" type="number" value="{$row.creater_idd}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{$row.create_time|datetime}">
+            <input id="c-create_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{$row.create_time}">
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
         <div class="col-xs-12 col-sm-8">
-            <input id="c-update_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{$row.update_time|datetime}">
+            <input id="c-update_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{$row.update_time}">
         </div>
     </div>
     <div class="form-group layer-footer">

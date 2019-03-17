@@ -1,0 +1,160 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" class="form-control" name="row[name]" type="text" value="{$row.name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Contact_information')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-contact_information" class="form-control" name="row[contact_information]" type="text" value="{$row.contact_information}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Working_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-working_status" class="form-control" name="row[working_status]" type="number" value="{$row.working_status}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gender')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-gender" class="form-control" name="row[gender]" type="number" value="{$row.gender}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-type" class="form-control selectpicker" name="row[type]">
+                {foreach name="typeList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.type"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Age')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-age" class="form-control" name="row[age]" type="number" value="{$row.age}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Resource')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-resource" class="form-control" name="row[resource]" type="text" value="{$row.resource}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nationality')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nationality" class="form-control" name="row[nationality]" type="number" value="{$row.nationality}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Passport')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-passport" class="form-control" name="row[passport]" type="text" value="{$row.passport}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Degree')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-degree" class="form-control" name="row[degree]" type="number" value="{$row.degree}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Certificate')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-certificate" class="form-control" name="row[certificate]" type="number" value="{$row.certificate}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Visa_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-visa_status" class="form-control" name="row[visa_status]" type="number" value="{$row.visa_status}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Arriving_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-arriving_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[arriving_time]" type="text" value="{$row.arriving_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Expected_salary')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-expected_salary" class="form-control" name="row[expected_salary]" type="text" value="{$row.expected_salary}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Chinese')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-chinese" class="form-control" name="row[chinese]" type="number" value="{$row.chinese}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_1')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-expected_city_1" class="form-control" name="row[expected_city_1]" type="number" value="{$row.expected_city_1}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_2')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-expected_city_2" class="form-control" name="row[expected_city_2]" type="number" value="{$row.expected_city_2}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Company_type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-company_type" class="form-control" name="row[company_type]" type="number" value="{$row.company_type}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Credit_score')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-credit_score" class="form-control" name="row[credit_score]" type="number" value="{$row.credit_score}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Follow_up_status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-follow_up_status" class="form-control" name="row[follow_up_status]" type="number" value="{$row.follow_up_status}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Remarks')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-remarks" class="form-control" name="row[remarks]" type="text" value="{$row.remarks}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Creater_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-creater_id" data-rule="required" data-source="creater/index" class="form-control selectpage" name="row[creater_id]" type="text" value="{$row.creater_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-create_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{$row.create_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-update_time" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{$row.update_time|datetime}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
