@@ -9,20 +9,20 @@ use app\common\controller\Backend;
  *
  * @icon fa fa-circle-o
  */
-class Foreigncompanyblacklist extends Backend
+class Foreignteachersblacklist extends Backend
 {
     
     /**
-     * Foreigncompanyblacklist模型对象
-     * @var \app\admin\model\Foreigncompanyblacklist
+     * Foreignteachersblacklist模型对象
+     * @var \app\admin\model\Foreignteachersblacklist
      */
     protected $model = null;
 
     public function _initialize()
     {
         parent::_initialize();
-        $this->model = new \app\admin\model\Foreigncompanyblacklist;
-
+        $this->model = new \app\admin\model\Foreignteachersblacklist;
+        $this->view->assign("nationalityList", $this->model->getNationalityList());
     }
     
     /**

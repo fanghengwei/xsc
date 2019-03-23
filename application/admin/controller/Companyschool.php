@@ -22,7 +22,11 @@ class Companyschool extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\Companyschool;
-
+        $this->view->assign("typeList", $this->model->getTypeList());
+        $this->view->assign("workVisaProvidedList", $this->model->getWorkVisaProvidedList());
+        $this->view->assign("nonNativeAcceptableList", $this->model->getNonNativeAcceptableList());
+        $this->view->assign("housingList", $this->model->getHousingList());
+        $this->view->assign("blacklistList", $this->model->getBlacklistList());
     }
     
     /**

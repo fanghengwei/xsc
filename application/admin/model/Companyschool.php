@@ -18,50 +18,81 @@ class Companyschool extends Model
     
     // 追加属性
     protected $append = [
-        'arriving_time_text',
-        'create_time_text',
-        'update_time_text'
+        'type_text',
+        'work_visa_provided_text',
+        'non_native_acceptable_text',
+        'housing_text',
+        'blacklist_text'
     ];
     
 
     
-
-
-
-    public function getArrivingTimeTextAttr($value, $data)
+    public function getTypeList()
     {
-        $value = $value ? $value : (isset($data['arriving_time']) ? $data['arriving_time'] : '');
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+        return ['Public school' => __('Public school'),'Private school' => __('Private school'),'Kindergarten' => __('Kindergarten'),'International school\nInternational school\n\nInternational school\n\nInternational school\n\nInternational school\n\nInternational school\n\n' => __('International school\ninternational school\n\ninternational school\n\ninternational school\n\ninternational school\n\ninternational school\n\n'),'University' => __('University'),'Adults training school' => __('Adults training school'),'Kids training school' => __('Kids training school'),'Education Company' => __('Education company'),'Enterprises' => __('Enterprises'),'Others' => __('Others')];
+    }     
+
+    public function getWorkVisaProvidedList()
+    {
+        return ['No' => __('No'),'Yes' => __('Yes')];
+    }     
+
+    public function getNonNativeAcceptableList()
+    {
+        return ['No' => __('No'),'Yes' => __('Yes')];
+    }     
+
+    public function getHousingList()
+    {
+        return ['Housing in Campus' => __('Housing in campus'),'Apartment' => __('Apartment')];
+    }     
+
+    public function getBlacklistList()
+    {
+        return ['No' => __('No'),'Yes' => __('Yes')];
+    }     
+
+
+    public function getTypeTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['type']) ? $data['type'] : '');
+        $list = $this->getTypeList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
 
-    public function getCreateTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : (isset($data['create_time']) ? $data['create_time'] : '');
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    public function getWorkVisaProvidedTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['work_visa_provided']) ? $data['work_visa_provided'] : '');
+        $list = $this->getWorkVisaProvidedList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
 
-    public function getUpdateTimeTextAttr($value, $data)
-    {
-        $value = $value ? $value : (isset($data['update_time']) ? $data['update_time'] : '');
-        return is_numeric($value) ? date("Y-m-d H:i:s", $value) : $value;
+    public function getNonNativeAcceptableTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['non_native_acceptable']) ? $data['non_native_acceptable'] : '');
+        $list = $this->getNonNativeAcceptableList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
-    protected function setArrivingTimeAttr($value)
-    {
-        return $value && !is_numeric($value) ? strtotime($value) : $value;
+
+    public function getHousingTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['housing']) ? $data['housing'] : '');
+        $list = $this->getHousingList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
-    protected function setCreateTimeAttr($value)
-    {
-        return $value && !is_numeric($value) ? strtotime($value) : $value;
+
+    public function getBlacklistTextAttr($value, $data)
+    {        
+        $value = $value ? $value : (isset($data['blacklist']) ? $data['blacklist'] : '');
+        $list = $this->getBlacklistList();
+        return isset($list[$value]) ? $list[$value] : '';
     }
 
-    protected function setUpdateTimeAttr($value)
-    {
-        return $value && !is_numeric($value) ? strtotime($value) : $value;
-    }
+
 
 
 }
