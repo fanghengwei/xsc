@@ -300,3 +300,22 @@ if (!function_exists('var_export_short')) {
     }
 
 }
+
+if (!function_exists('dd')) {
+    /**
+     * var_dump的调试输出,不停止程序继续执行
+     * @return void
+     * @author xsc
+     * @date 2019-03-23 21:45:27
+     */
+    function dd()
+    {
+        $arr = func_get_args();
+        foreach ($arr as $_arr) {
+            echo "<pre>";
+            var_dump($_arr);
+            echo "</pre>";
+        }
+        die(1);
+    }
+}
