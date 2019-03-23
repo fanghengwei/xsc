@@ -21,7 +21,7 @@ class Companyschool extends Backend
     public function _initialize()
     {
         parent::_initialize();
-        if(empty($this->model)) $this->model = new \app\admin\model\Companyschool();
+        $this->model = new \app\admin\model\Companyschool;
         $this->view->assign("typeList", $this->model->getTypeList());
         $this->view->assign("workVisaProvidedList", $this->model->getWorkVisaProvidedList());
         $this->view->assign("nonNativeAcceptableList", $this->model->getNonNativeAcceptableList());
@@ -33,20 +33,6 @@ class Companyschool extends Backend
      * 因此在当前控制器中可不用编写增删改查的代码,除非需要自己控制这部分逻辑
      * 需要将application/admin/library/traits/Backend.php中对应的方法复制到当前控制器,然后进行修改
      */
-
-    public function add()
-    {
-        if ($this->request->isPost()) {
-            //过滤/获取/验证参数
-            $this->request->filter(['trim']);
-            $input= $this->request->param();
-            //呼叫M层进行处理
-            $this->model->add($input);
-            $this->success('success');
-        }
-        //返回界面
-        return $this->view->fetch();
-    }
-
+    
 
 }
