@@ -24,8 +24,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
+                        {field: 'id', title: __('Id')},
                         {field: 'name', title: __('Name')},
                         {field: 'recorder', title: __('Recorder')},
+                        {field: 'recorder_id', title: __('Recorder_id')},
                         {field: 'contact_information', title: __('Contact_information')},
                         {field: 'working_status', title: __('Working_status'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.status},
                         {field: 'gender', title: __('Gender'), searchList: {"Female":__('Female'),"Male":__('Male')}, formatter: Table.api.formatter.normal},
@@ -44,6 +46,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'expected_city_2', title: __('Expected_city_2')},
                         {field: 'company_type', title: __('Company_type'), searchList: {"Public school":__('Public school'),"Private school":__('Private school'),"Kindergarten":__('Kindergarten'),"International school":__('International school'),"University":__('University'),"Adults training school":__('Adults training school'),"Kids training school":__('Kids training school'),"Enterprises":__('Enterprises'),"Others":__('Others')}, formatter: Table.api.formatter.normal},
                         {field: 'credit_score', title: __('Credit_score'), searchList: {"0 Ponint":__('0 ponint'),"1 Ponint":__('1 ponint'),"2 Ponints":__('2 ponints'),"3 Ponints":__('3 ponints'),"4 Ponints":__('4 ponints'),"5 Ponints":__('5 ponints')}, formatter: Table.api.formatter.normal},
+                        {field: 'follow_id', title: __('Follow_id')},
+                        {field: 'follow_name', title: __('Follow_name')},
                         {field: 'follow_up_status', title: __('Follow_up_status'), searchList: {"Interviewing":__('Interviewing'),"Signed":__('Signed'),"Visa processing":__('Visa processing'),"Arrived":__('Arrived'),"Agent fee paid":__('Agent fee paid'),"Failed":__('Failed')}, formatter: Table.api.formatter.status},
                         {field: 'attachment_files', title: __('Attachment_files')},
                         {field: 'creater_idd', title: __('Creater_idd')},
