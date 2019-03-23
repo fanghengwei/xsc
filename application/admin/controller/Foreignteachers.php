@@ -83,4 +83,37 @@ class Foreignteachers extends Backend
         }
         return $this->view->fetch();
     }
+
+    public function add(){
+        if ($this->request->isPost()) {
+            $params = $this->request->post("row/a");
+            if ($params) {
+                if ($this->dataLimit && $this->dataLimitFieldAutoFill) {
+                    $params[$this->dataLimitField] = $this->auth->id;
+                }
+                try {
+                    //是否采用模型验证
+                    if ($this->modelValidate) {
+                        $name = str_replace("\\model\\", "\\validate\\", get_class($this->model));
+                        $validate = is_bool($this->modelValidate) ? ($this->modelSceneValidate ? $name . '.add' : $name) : $this->modelValidate;
+                        $this->model->validate($validate);
+                    }
+                    $params['create_time']=date("Y-m-d H:i:s");
+                    $params['update_time']=date("Y-m-d H:i:s");
+                    $result = $this->model->allowField(true)->save($params);
+                    if ($result !== false) {
+                        $this->success();
+                    } else {
+                        $this->error($this->model->getError());
+                    }
+                } catch (\think\exception\PDOException $e) {
+                    $this->error($e->getMessage());
+                } catch (\think\Exception $e) {
+                    $this->error($e->getMessage());
+                }
+            }
+            $this->error(__('Parameter %s can not be empty', ''));
+        }
+        return $this->view->fetch();
+    }
 }

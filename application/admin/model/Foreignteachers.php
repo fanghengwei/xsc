@@ -10,11 +10,11 @@ class Foreignteachers extends Model
     protected $name = 'foreign_teachers';
     
     // 自动写入时间戳字段
-    protected $autoWriteTimestamp = false;
+    protected $autoWriteTimestamp = true;
 
     // 定义时间戳字段名
-    protected $createTime = false;
-    protected $updateTime = false;
+    protected $createTime = true;
+    protected $updateTime = true;
     
     // 追加属性
     protected $append = [

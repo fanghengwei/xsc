@@ -7,18 +7,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Recorder')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-recorder" class="form-control" name="row[recorder]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Recorder_id')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-recorder_id" data-rule="required" data-source="recorder/index" class="form-control selectpage" name="row[recorder_id]" type="text" value="">
-        </div>
-    </div>
-    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Contact_information')}:</label>
         <div class="col-xs-12 col-sm-8">
             <input id="c-contact_information" data-rule="required" class="form-control" name="row[contact_information]" type="text">
@@ -27,11 +15,11 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Working_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            
+
             <div class="radio">
-            {foreach name="workingStatusList" item="vo"}
-            <label for="row[working_status]-{$key}"><input id="row[working_status]-{$key}" name="row[working_status]" type="radio" value="{$key}" {in name="key" value="No"}checked{/in} /> {$vo}</label> 
-            {/foreach}
+                {foreach name="workingStatusList" item="vo"}
+                <label for="row[working_status]-{$key}"><input id="row[working_status]-{$key}" name="row[working_status]" type="radio" value="{$key}" {in name="key" value="No"}checked{/in} /> {$vo}</label>
+                {/foreach}
             </div>
 
         </div>
@@ -39,10 +27,10 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Gender')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-gender" data-rule="required" class="form-control selectpicker" name="row[gender]">
                 {foreach name="genderList" item="vo"}
-                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
                 {/foreach}
             </select>
 
@@ -51,10 +39,10 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-type" data-rule="required" class="form-control selectpicker" name="row[type]">
                 {foreach name="typeList" item="vo"}
-                    <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
+                <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
                 {/foreach}
             </select>
 
@@ -187,25 +175,13 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Follow_id')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-follow_id" data-rule="required" data-source="follow/index" class="form-control selectpage" name="row[follow_id]" type="text" value="">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Follow_name')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-follow_name" class="form-control" name="row[follow_name]" type="text">
-        </div>
-    </div>
-    <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Follow_up_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            
+
             <div class="radio">
-            {foreach name="followUpStatusList" item="vo"}
-            <label for="row[follow_up_status]-{$key}"><input id="row[follow_up_status]-{$key}" name="row[follow_up_status]" type="radio" value="{$key}" {in name="key" value="Interviewing"}checked{/in} /> {$vo}</label> 
-            {/foreach}
+                {foreach name="followUpStatusList" item="vo"}
+                <label for="row[follow_up_status]-{$key}"><input id="row[follow_up_status]-{$key}" name="row[follow_up_status]" type="radio" value="{$key}" {in name="key" value="Interviewing"}checked{/in} /> {$vo}</label>
+                {/foreach}
             </div>
 
         </div>
@@ -228,24 +204,6 @@
                 <span class="msg-box n-right" for="c-attachment_files"></span>
             </div>
             <ul class="row list-inline plupload-preview" id="p-attachment_files"></ul>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Creater_idd')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-creater_idd" data-rule="required" class="form-control" name="row[creater_idd]" type="number" value="0">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Create_time')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-create_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[create_time]" type="text" value="{:date('Y-m-d H:i:s')}">
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Update_time')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <input id="c-update_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[update_time]" type="text" value="{:date('Y-m-d H:i:s')}">
         </div>
     </div>
     <div class="form-group layer-footer">
