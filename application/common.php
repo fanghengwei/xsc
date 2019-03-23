@@ -319,3 +319,16 @@ if (!function_exists('dd')) {
         die(1);
     }
 }
+
+if (!function_exists('TEA')) {
+    /**
+     * API异常抛出来
+     * @param $message
+     * @param string $code
+     * @throws \app\common\exception\FrontException
+     */
+    function TEA($message, $code =0)
+    {
+        throw new \app\common\exception\FrontException($message, $code);
+    }
+}
