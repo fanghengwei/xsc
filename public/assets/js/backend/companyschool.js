@@ -24,7 +24,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'),operate:false,sortable: true},
                         {field: 'type', title: __('Type'), searchList: {"Public school":__('Public school'),"Private school":__('Private school'),"Kindergarten":__('Kindergarten'),"International school\\nInternational school\\n\\nInternational school\\n\\nInternational school\\n\\nInternational school\\n\\nInternational school\\n\\n":__('International school\\ninternational school\\n\\ninternational school\\n\\ninternational school\\n\\ninternational school\\n\\ninternational school\\n\\n'),"University":__('University'),"Adults training school":__('Adults training school'),"Kids training school":__('Kids training school'),"Education Company":__('Education company'),"Enterprises":__('Enterprises'),"Others":__('Others')}, formatter: Table.api.formatter.normal},
                         {field: 'city', title: __('City')},
                         {field: 'contact_name', title: __('Contact_name')},
@@ -36,14 +36,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'work_visa_provided', title: __('Work_visa_provided'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.normal},
                         {field: 'non_native_acceptable', title: __('Non_native_acceptable'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.normal},
                         {field: 'housing', title: __('Housing'), searchList: {"Housing in Campus":__('Housing in campus'),"Apartment":__('Apartment')}, formatter: Table.api.formatter.normal},
-                        {field: 'salsary_rang_low', title: __('Salsary_rang_low')},
-                        {field: 'salsary_rang_high', title: __('Salsary_rang_high')},
-                        {field: 'Vacancy', title: __('Vacancy')},
-                        {field: 'blacklist', title: __('Blacklist'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.normal},
-                        {field: 'blacklist_reason', title: __('Blacklist_reason')},
-                        {field: 'creater_id', title: __('Creater_id')},
-                        {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange'},
-                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange'},
+                        {field: 'salsary_rang_low', title: __('Salsary_rang_low'),operate:false},
+                        {field: 'salsary_rang_high', title: __('Salsary_rang_high'),operate:false},
+                        {field: 'vacancy', title: __('Vacancy')},
+                        {field: 'recruitment_details', title: __('Recruitment details'),operate:false},
+                        {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange',operate:false},
+                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange',operate:false},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
