@@ -14,7 +14,6 @@ return [
     'Housing'  =>  'Housing',
     'Salsary_rang_low'  =>  'Salsary rang low',
     'Salsary_rang_high'  =>  'Salsary rang high',
-    'Vacancy'  =>  'Vacancy',
-    'Blacklist'  =>  'Blacklist',
-    'Blacklist_reason'  =>  'Blacklist reason'
+    'Vacancy'  =>  'Vacancy No.',
+    'Recruitment_details'  =>  'Recruitment details'
 ];
