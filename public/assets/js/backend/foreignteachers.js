@@ -24,8 +24,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
                         {field: 'name', title: __('Name')},
+                        {field: 'recorder', title: __('Recorder')},
                         {field: 'contact_information', title: __('Contact_information')},
                         {field: 'working_status', title: __('Working_status'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.status},
                         {field: 'gender', title: __('Gender'), searchList: {"Female":__('Female'),"Male":__('Male')}, formatter: Table.api.formatter.normal},
@@ -49,6 +49,19 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'creater_idd', title: __('Creater_idd')},
                         {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange'},
                         {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange'},
+                        {field: 'admin.id', title: __('Admin.id')},
+                        {field: 'admin.username', title: __('Admin.username')},
+                        {field: 'admin.nickname', title: __('Admin.nickname')},
+                        {field: 'admin.password', title: __('Admin.password')},
+                        {field: 'admin.salt', title: __('Admin.salt')},
+                        {field: 'admin.avatar', title: __('Admin.avatar')},
+                        {field: 'admin.email', title: __('Admin.email')},
+                        {field: 'admin.loginfailure', title: __('Admin.loginfailure')},
+                        {field: 'admin.logintime', title: __('Admin.logintime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'admin.createtime', title: __('Admin.createtime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'admin.updatetime', title: __('Admin.updatetime'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'admin.token', title: __('Admin.token')},
+                        {field: 'admin.status', title: __('Admin.status'), formatter: Table.api.formatter.status},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]

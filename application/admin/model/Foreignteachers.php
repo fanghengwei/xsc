@@ -183,4 +183,8 @@ class Foreignteachers extends Model
     }
 
 
+    public function admin()
+    {
+        return $this->belongsTo('Admin', 'recorder_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }
