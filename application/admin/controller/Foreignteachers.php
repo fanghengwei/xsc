@@ -60,13 +60,13 @@ class Foreignteachers extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['admin'])
+                    ->with(['admin','follow'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['admin'])
+                    ->with(['admin','follow'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
