@@ -16,5 +16,6 @@ return [
     //endregion
     //region  C
     'cs'=>'xsc_company_school',//
+    'csbl'=>'xsc_company_school_black_list',//
     //endregion
 ];
