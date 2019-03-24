@@ -8,6 +8,8 @@ use think\Controller;
 use think\Hook;
 use think\Lang;
 use think\Session;
+use think\exception\HttpResponseException;
+use think\Response;
 
 /**
  * 后台控制器基类
@@ -469,5 +471,32 @@ class Backend extends Controller
         //这里一定要返回有list这个字段,total是可选的,如果total<=list的数量,则会隐藏分页按钮
         return json(['list' => $list, 'total' => $total]);
     }
+
+    /**
+     * 返回封装后的 API 数据到客户端
+     * @access protected
+     * @param mixed  $data   要返回的数据
+     * @param int    $code   返回的 code
+     * @param mixed  $msg    提示信息
+     * @param array  $paging 分页数据
+     * @param string $type   返回数据格式
+     * @param array  $header 发送的 Header 信息
+     * @return void
+     * @throws HttpResponseException
+     */
+    protected function api_response($data, $code = 1, $msg = '',array $paging = [], $type = '', array $header = [])
+    {
+        $result = [
+            'code' => $code,
+            'msg'  => $msg,
+            'data' => $data,
+        ];
+        if ($paging) $result['paging'] = $paging;
+        $type     = $type ?: $this->getResponseType();
+        $response = Response::create($result, $type)->header($header);
+
+        throw new HttpResponseException($response);
+    }
+
 
 }

@@ -27,6 +27,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
+                clickToSelect: false, //是否启用点击搜索
+                commonSearch: true, //是否启用顶部搜索
+                dblClickToEdit: false, //是否启用双击编辑
                 columns: [
                     [
                         {field: 'state', checkbox: true, },
@@ -34,7 +37,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'username', title: __('Username')},
                         {field: 'nickname', title: __('Nickname')},
                         {field: 'groups_text', title: __('Group'), operate:false, formatter: Table.api.formatter.label},
-                        {field: 'email', title: __('Email')},
                         {field: 'status', title: __("Status"), formatter: Table.api.formatter.status},
                         {field: 'logintime', title: __('Login time'), formatter: Table.api.formatter.datetime, operate: 'RANGE', addclass: 'datetimerange', sortable: true},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: function (value, row, index) {

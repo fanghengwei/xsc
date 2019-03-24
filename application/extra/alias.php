@@ -11,6 +11,7 @@ return [
 
     //region  A
     'admin'=>'xsc_admin',//系统管理员表
+    'areas'=>'xsc_areas',//城市表
     //endregion
     //region  B
     //endregion

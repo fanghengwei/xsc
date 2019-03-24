@@ -12,6 +12,7 @@ require.config({
         'lang': "empty:",
         'form': 'require-form',
         'table': 'require-table',
+        'ajaxclient': 'ajax-client',
         'upload': 'require-upload',
         'validator': 'require-validator',
         'drag': 'jquery.drag.min',

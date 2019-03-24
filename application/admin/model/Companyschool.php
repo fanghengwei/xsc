@@ -180,6 +180,15 @@ class Companyschool extends Model
             ->find();
         return $row;
     }
+
+    public function areas()
+    {
+        $city = Db::table(config('alias.areas'))
+            ->where('pid', '<>', 0)
+            ->field('pid as parentId,code as id,city as name,letter')
+            ->select();
+        return $city;
+    }
     //endregion
 
     //region  增

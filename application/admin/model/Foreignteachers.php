@@ -215,6 +215,11 @@ class Foreignteachers extends Model
             ->order($sort, $order)
             ->limit($offset, $limit)
             ->select();
+
+        foreach ($list as &$val) {
+            $city1 = Db::table(config('alias.areas'))->field('province,city')->where('code',$val['expected_city_1'])->select();
+            $val['expected_city_1'] = $city1[0]['province'].' '.$city1[0]['city'];
+        }
         return ['total'=>$total,'rows'=>$list];
     }
 

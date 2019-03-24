@@ -3,6 +3,8 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use think\exception\HttpResponseException;
+use think\Response;
 
 /**
  * 
@@ -17,6 +19,13 @@ class Companyschool extends Backend
      * @var \app\admin\model\Companyschool
      */
     protected $model = null;
+    /**
+     * 无需鉴权的方法,但需要登录
+     * @var array
+     */
+    protected $noNeedRight = [
+        'getAreas',
+    ];
 
     public function _initialize()
     {
@@ -46,6 +55,12 @@ class Companyschool extends Backend
             return json($result);
         }
         return $this->view->fetch();
+    }
+
+    public function getAreas()
+    {
+        $list = $this->model->areas();
+        $this->api_response($list);
     }
     //endregion
 
@@ -111,5 +126,4 @@ class Companyschool extends Backend
         return $this->view->fetch();
     }
     //endregion
-
 }
