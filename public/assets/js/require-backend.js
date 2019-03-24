@@ -15,6 +15,7 @@ require.config({
         'ajaxclient': 'ajax-client',
         'upload': 'require-upload',
         'validator': 'require-validator',
+        'city-select': 'citySelect.min',
         'drag': 'jquery.drag.min',
         'drop': 'jquery.drop.min',
         'echarts': 'echarts.min',
