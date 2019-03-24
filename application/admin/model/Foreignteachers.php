@@ -187,4 +187,9 @@ class Foreignteachers extends Model
     {
         return $this->belongsTo('Admin', 'recorder_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
+
+    public function follow()
+    {
+        return $this->belongsTo('Follow', 'follow_id', 'id', [], 'LEFT')->setEagerlyType(0);
+    }
 }
