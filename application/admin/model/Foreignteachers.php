@@ -292,5 +292,18 @@ class Foreignteachers extends Model
         if($upd===false)  TEA('field');
 
     }
+
+    public function change_follow($input) {
+        $user = Auth::instance();
+        $name = Db::table(config('alias.admin'))->where('id',$user->id)->value('nickname');
+        $upd=Db::table($this->table)->where('id',$input['ids'])->update([
+            'follow_up_status'=>$input['status'],
+            'remarks'=>$input['remarks'],
+            'follow_id'=>$user->id,
+            'follow_name'=>$name,
+            'update_time' => date('Y-m-d H:i:s',time()),
+        ]);
+        if($upd===false)  TEA('field');
+    }
     //endregion
 }

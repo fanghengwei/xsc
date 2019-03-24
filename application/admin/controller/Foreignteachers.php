@@ -68,18 +68,21 @@ class Foreignteachers extends Backend
         return $this->view->fetch();
     }
 
-    public function show_follow(){
+    public function show_follow($ids = NULL){
         if ($this->request->isPost()) {
-            $this->model->where(['id'=>input('id')])->update(['follow_up_status'=>input('status'),'remarks'=>input('remarks')]);
-
-            $teacher = $this->model->get(['id'=>input('ids')]);
-            $this->assign('teacher',$teacher);
-            $this->assign('key',$teacher['follow_up_status']);
-        }else{
-            $teacher = $this->model->get(['id'=>input('ids')]);
-            $this->assign('teacher',$teacher);
-            $this->assign('key',$teacher['follow_up_status']);
+            //过滤/获取/id判断/验证参数
+            $this->request->filter(['trim']);
+            $input= $this->request->param();
+            if(empty($input['ids']) || !is_numeric($input['ids'])) TEA(__('Parameter %s is not valid', 'ids'));
+            //呼叫M层进行处理
+            $this->model->change_follow($input);
+            $this->success('success');
         }
+        //返回界面
+        $row=$this->model->getOne($ids);
+        if(empty($row)) $this->error('Not found');
+        $this->view->assign("teacher", $row);
+        $this->view->assign("key", $row['follow_up_status']);
         return $this->view->fetch();
     }
 
