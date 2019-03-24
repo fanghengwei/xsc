@@ -40,17 +40,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'follow_up_status', title: __('Follow_up_status'), searchList: {"Interviewing":__('Interviewing'),"Signed":__('Signed'),"Visa processing":__('Visa processing'),"Arrived":__('Arrived'),"Agent fee paid":__('Agent fee paid'),"Failed":__('Failed')}, formatter: Table.api.formatter.status},
 
                         //操作
-                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate,
-                            buttons: [
-                                {
-                                    name: 'detail',
-                                    text: 'Follow-up',
-                                    title: 'Follow-up',
-                                    icon: 'fa fa-list',
-                                    classname: 'btn btn-xs btn-primary btn-dialog',
-                                    url: '/admin/foreignteachers/show_follow'
-                                }
-                            ], formatter: Table.api.formatter.operate,operate:false
+                        { field: 'follow', title:'Follow', table: table, operate:false, formatter: Controller.api.formatter.buttons },
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,operate:false
                         },
 
 
@@ -76,6 +67,23 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
             // 为表格绑定事件
             Table.api.bindevent(table);
+
+            //设置公众号
+            $(document).on('click','.btn-follow',function(){
+                var ids = ($(this).attr('pid'));
+                layer.open({
+                    type: 2,
+                    title: 'Follow-up',
+                    shadeClose: true,
+                    shade: false,
+                    maxmin: true, //开启最大化最小化按钮
+                    area: ['893px', '600px'],
+                    content: 'foreignteachers/show_follow?ids='+ids,
+                    end: function () {
+                        table.bootstrapTable('refresh',{})
+                    }
+                });
+            });
         },
         add: function () {
             Controller.api.bindevent();
@@ -86,6 +94,12 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
+            },
+            formatter:{
+                buttons: function (value,row,index) {
+                    html = '<a href=javascript:; pid="'+row.id+'"class="btn btn-xs btn-info btn-follow" title="Follow-up"><i class="fa fa-commenting-o"> Follow-up</i></a>';
+                    return html;
+                },
             },
             expected_city: function (value, row, index) {
                 return row.city1.province+' '+row.city2.city;
