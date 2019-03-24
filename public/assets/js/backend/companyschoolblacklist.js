@@ -27,15 +27,15 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'),visible:false,operate:false},
                         {field: 'name', title: __('Name')},
-                        {field: 'contact_name', title: __('Contact_name')},
-                        {field: 'contace_information', title: __('Contace_information')},
+                        {field: 'contact_name', title: __('Contact_name'),operate:false},
+                        {field: 'contace_information', title: __('Contace_information'),operate:false},
                         {field: 'reporter', title: __('Reporter')},
-                        {field: 'reason', title: __('Reason')},
+                        {field: 'reason', title: __('Reason'),operate:false},
                         {field: 'recorder', title: __('Recorder')},
-                        {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
-                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,operate:false},
+                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,visible:false,operate:false},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
