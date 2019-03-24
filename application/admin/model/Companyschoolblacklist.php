@@ -98,7 +98,6 @@ class Companyschoolblacklist extends Model
      * @date 2019-03-23 23:30:36
      */
     public function check($input) {
-//        dd($input);
         $sort =$input['sort'] ?? 'create_time';
         $order =$input['order'] ?? 'DESC';
         $offset =$input['offset'] ?? 0;
@@ -108,29 +107,16 @@ class Companyschoolblacklist extends Model
         if (isset($input['filter'])) {
             $search = json_decode($input['filter']);
             // type
-            if (!empty($search->type)) $where['type']= ['=',addslashes($search->type)];
+            if (!empty($search->name)) $where['name']= ['like','%'.addslashes($search->name).'%'];
 
-            //work_visa_provided
-            if (!empty($search->work_visa_provided)) $where['work_visa_provided']= ['=',addslashes($search->work_visa_provided)];
+            //reporter
+            if (!empty($search->reporter)) $where['reporter']= ['like','%'.addslashes($search->reporter).'%'];
 
-            //non_native_acceptable
-            if (!empty($search->non_native_acceptable)) $where['non_native_acceptable']= ['=',addslashes($search->non_native_acceptable)];
-
-            //housing
-            if (!empty($search->housing)) $where['housing']= ['=',addslashes($search->housing)];
-
-            //arriving_time
-            if (!empty($search->arriving_time)) {
-                $time = explode(' - ',$search->arriving_time);
-                if(!empty($time['0']) && !empty($time['1'])) $where['arriving_time']=['BETWEEN',[$time['0'],$time['1']]];
-            }
             //recorder
-            if (!empty($search->username)) {
-                $users = Db::table(config('alias.admin'))->where('nickname','like','%'.addslashes($search->username).'%')->column('id');
+            if (!empty($search->recorder)) {
+                $users = Db::table(config('alias.admin'))->where('nickname','like','%'.addslashes($search->recorder).'%')->column('id');
                 $where['creater_id'] = ['in',$users];
             }
-
-
         }
 
         return [$where, $sort, $order, $offset, $limit];
