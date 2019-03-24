@@ -55,7 +55,7 @@ class Foreignteachers extends Model
 
     public function getDegreeList()
     {
-        return ['High school or below' => __('High school or below'),'College' => __('College'),'Bachelor Master' => __('Bachelor master'),'Doctor' => __('Doctor'),'' => __('')];
+        return ['High school or below' => __('High school or below'),'College' => __('College'),'Bachelor' => __('Bachelor'),'Master' => __('Master'),'Doctor' => __('Doctor')];
     }     
 
     public function getCertificateList()
