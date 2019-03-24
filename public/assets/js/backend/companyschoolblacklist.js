@@ -8,7 +8,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     index_url: 'companyschoolblacklist/index',
                     add_url: 'companyschoolblacklist/add',
                     edit_url: 'companyschoolblacklist/edit',
-                    del_url: 'companyschoolblacklist/del',
+                    // del_url: 'companyschoolblacklist/del',
                     multi_url: 'companyschoolblacklist/multi',
                     table: 'company_school_black_list',
                 }
@@ -21,6 +21,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
                 sortName: 'id',
+                clickToSelect: false, //是否启用点击搜索
+                commonSearch: true, //是否启用顶部搜索
+                dblClickToEdit: false, //是否启用双击编辑
                 columns: [
                     [
                         {checkbox: true},
@@ -29,8 +32,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'contact_name', title: __('Contact_name')},
                         {field: 'contace_information', title: __('Contace_information')},
                         {field: 'reporter', title: __('Reporter')},
-                        {field: 'reson', title: __('Reson')},
-                        {field: 'creater_id', title: __('Creater_id')},
+                        {field: 'reason', title: __('Reason')},
+                        {field: 'recorder', title: __('Recorder')},
                         {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
