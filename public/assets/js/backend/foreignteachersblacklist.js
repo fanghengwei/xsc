@@ -8,7 +8,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     index_url: 'foreignteachersblacklist/index',
                     add_url: 'foreignteachersblacklist/add',
                     edit_url: 'foreignteachersblacklist/edit',
-                    del_url: 'foreignteachersblacklist/del',
                     multi_url: 'foreignteachersblacklist/multi',
                     table: 'foreign_teachers_black_list',
                 }
@@ -34,8 +33,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'contact_information',operate:false, title: __('Contact_information')},
                         {field: 'reason_for_blacklist',operate:false, title: __('Reason_for_blacklist')},
                         {field: 'reporter', title: __('Reporter')},
-                        {field: 'creater_id',visible:false,operate:false, title: __('Creater_id')},
-                        {field: 'contace_name',visible:false,operate:false, title: __('Contace_name')},
+                        // {field: 'creater_id',visible:false,operate:false, title: __('Creater_id')},
+                        // {field: 'contace_name',visible:false,operate:false, title: __('Contace_name')},
                         {field: 'create_time',visible:false,operate:false, title: __('Create_time'),  addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'update_time',visible:false,operate:false, title: __('Update_time'), addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
