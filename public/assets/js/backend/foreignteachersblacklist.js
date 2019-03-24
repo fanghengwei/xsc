@@ -21,6 +21,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
                 sortName: 'id',
+                clickToSelect: false, //是否启用点击搜索
+                commonSearch: true, //是否启用顶部搜索
+                dblClickToEdit: false, //是否启用双击编辑
                 columns: [
                     [
                         {checkbox: true},

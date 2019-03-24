@@ -2,6 +2,8 @@
 
 namespace app\admin\model;
 
+use app\admin\library\Auth;
+use think\Db;
 use think\Model;
 
 class Foreignteachers extends Model
@@ -30,9 +32,17 @@ class Foreignteachers extends Model
         'credit_score_text',
         'follow_up_status_text'
     ];
-    
 
-    
+    /**
+     * RetrieveClass constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        if(empty($this->table)) $this->table = config('alias.ft');
+    }
+
+    //region  基础
     public function getWorkingStatusList()
     {
         return ['No' => __('No'),'Yes' => __('Yes')];
@@ -88,14 +98,12 @@ class Foreignteachers extends Model
         return ['Interviewing' => __('Interviewing'),'Signed' => __('Signed'),'Visa processing' => __('Visa processing'),'Arrived' => __('Arrived'),'Agent fee paid' => __('Agent fee paid'),'Failed' => __('Failed')];
     }     
 
-
     public function getWorkingStatusTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['working_status']) ? $data['working_status'] : '');
         $list = $this->getWorkingStatusList();
         return isset($list[$value]) ? $list[$value] : '';
     }
-
 
     public function getGenderTextAttr($value, $data)
     {        
@@ -104,14 +112,12 @@ class Foreignteachers extends Model
         return isset($list[$value]) ? $list[$value] : '';
     }
 
-
     public function getTypeTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['type']) ? $data['type'] : '');
         $list = $this->getTypeList();
         return isset($list[$value]) ? $list[$value] : '';
     }
-
 
     public function getNationalityTextAttr($value, $data)
     {        
@@ -120,14 +126,12 @@ class Foreignteachers extends Model
         return isset($list[$value]) ? $list[$value] : '';
     }
 
-
     public function getDegreeTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['degree']) ? $data['degree'] : '');
         $list = $this->getDegreeList();
         return isset($list[$value]) ? $list[$value] : '';
     }
-
 
     public function getCertificateTextAttr($value, $data)
     {
@@ -137,14 +141,12 @@ class Foreignteachers extends Model
         return implode(',', array_intersect_key($list, array_flip($valueArr)));
     }
 
-
     public function getVisaStatusTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['visa_status']) ? $data['visa_status'] : '');
         $list = $this->getVisaStatusList();
         return isset($list[$value]) ? $list[$value] : '';
     }
-
 
     public function getChineseTextAttr($value, $data)
     {        
@@ -153,7 +155,6 @@ class Foreignteachers extends Model
         return isset($list[$value]) ? $list[$value] : '';
     }
 
-
     public function getCompanyTypeTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['company_type']) ? $data['company_type'] : '');
@@ -161,14 +162,12 @@ class Foreignteachers extends Model
         return isset($list[$value]) ? $list[$value] : '';
     }
 
-
     public function getCreditScoreTextAttr($value, $data)
     {        
         $value = $value ? $value : (isset($data['credit_score']) ? $data['credit_score'] : '');
         $list = $this->getCreditScoreList();
         return isset($list[$value]) ? $list[$value] : '';
     }
-
 
     public function getFollowUpStatusTextAttr($value, $data)
     {        
@@ -181,7 +180,6 @@ class Foreignteachers extends Model
     {
         return is_array($value) ? implode(',', $value) : $value;
     }
-
 
     public function admin()
     {
@@ -202,4 +200,97 @@ class Foreignteachers extends Model
     {
         return $this->belongsTo('Areas', 'expected_city_2', 'code', [], 'LEFT')->setEagerlyType(0);
     }
+    //endregion
+
+    //region  查
+    public function getList($input) {
+        list($where, $sort, $order, $offset, $limit) = $this->check($input);
+        $total = Db::table($this->table)
+            ->where($where)
+            ->order($sort, $order)
+            ->count();
+
+        $list = Db::table($this->table)
+            ->where($where)
+            ->order($sort, $order)
+            ->limit($offset, $limit)
+            ->select();
+        return ['total'=>$total,'rows'=>$list];
+    }
+
+    public function check($input) {
+        $sort =$input['sort'] ?? 'id';
+        $order =$input['order'] ?? 'DESC';
+        $offset =$input['offset'] ?? 0;
+        $limit =$input['limit'] ?? 0;
+        $where = [];
+
+        if (isset($input['filter'])) {
+            $search = json_decode($input['filter']);
+            // name
+            if (!empty($search->name)) $where['name']= ['like','%'.addslashes($search->name).'%'];
+            // expected_city_1
+            if (!empty($search->expected_city_1)) $where['expected_city_1']= ['like','%'.addslashes($search->expected_city_1).'%'];
+            // type
+            if (!empty($search->type)) $where['type']= ['=',addslashes($search->type)];
+            // working_status
+            if (!empty($search->working_status)) $where['working_status']= ['=',addslashes($search->working_status)];
+            // nationality
+            if (!empty($search->nationality)) $where['nationality']= ['=',addslashes($search->nationality)];
+            // company_type
+            if (!empty($search->company_type)) $where['company_type']= ['=',addslashes($search->company_type)];
+            //recorder
+            if (!empty($search->recorder)) $where['recorder_id']= ['=',addslashes($search->recorder)];
+            // follow_up_status
+            if (!empty($search->follow_up_status)) $where['follow_up_status']= ['=',addslashes($search->follow_up_status)];
+            //arriving_time
+            if (!empty($search->arriving_time)) {
+                $time = explode(' - ',$search->arriving_time);
+                if(!empty($time['0']) && !empty($time['1'])) $where['arriving_time']=['BETWEEN',[$time['0'],$time['1']]];
+            }
+        }
+
+        return [$where, $sort, $order, $offset, $limit];
+    }
+
+    public function getOne($ids) {
+        $row = Db::table($this->table)
+            ->where('id',$ids)
+            ->find();
+        return $row;
+    }
+    //endregion
+
+    //region  增
+    public function add($input) {
+        $row = $input['row'];
+        $user = Auth::instance();
+        $name = Db::table(config('alias.admin'))->where('id',$user->id)->value('nickname');
+        //组装数据
+        $data = [
+            'recorder' => $name,
+            'recorder_id' => $user->id,
+            'create_time' => date('Y-m-d H:i:s',time()),
+            'update_time' => date('Y-m-d H:i:s',time()),
+        ];
+        $insert_data = array_merge($row,$data);
+        $insert_id = Db::table($this->table)->insertGetId($insert_data);
+        if(!$insert_id) TEA('field');
+        return $insert_id;
+    }
+    //endregion
+
+    //region  改
+    public  function change($input) {
+        $insert = $input['row'];
+        //组装数据
+        $data = [
+            'update_time' => date('Y-m-d H:i:s',time()),
+        ];
+        $insert = array_merge($insert,$data);
+        $upd=Db::table($this->table)->where('id',$input['ids'])->update($insert);
+        if($upd===false)  TEA('field');
+
+    }
+    //endregion
 }

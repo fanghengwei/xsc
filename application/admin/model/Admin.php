@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use think\Db;
 use think\Model;
 use think\Session;
 
@@ -29,6 +30,15 @@ class Admin extends Model
     protected function encryptPassword($password, $salt = '', $encrypt = 'md5')
     {
         return $encrypt($password . $salt);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdmin() {
+        return Db::table(config('alias.admin'))
+            ->where('status','normal')
+            ->column('nickname','id');
     }
 
 }

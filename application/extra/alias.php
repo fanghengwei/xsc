@@ -18,4 +18,11 @@ return [
     'cs'=>'xsc_company_school',//
     'csbl'=>'xsc_company_school_black_list',//
     //endregion
+    //region  D
+    //endregion
+    //region  E
+    //endregion
+    //region  F
+    'ft' => 'xsc_foreign_teachers'
+    //endregion
 ];
