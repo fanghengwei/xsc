@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 use app\admin\model\Admin;
 use app\common\controller\Backend;
+use think\Db;
 
 /**
  * 
@@ -18,6 +19,14 @@ class Foreignteachers extends Backend
      * @var \app\admin\model\Foreignteachers
      */
     protected $model = null;
+
+    /**
+     * 无需鉴权的方法,但需要登录
+     * @var array
+     */
+    protected $noNeedRight = [
+        'show_follow',
+    ];
 
     public function _initialize()
     {
@@ -96,7 +105,7 @@ class Foreignteachers extends Backend
 
             //权限验证
             if(session('admin.group')!=1){
-                $teacher = $this->model->get(['id'=>$input['ids']]);
+                $teacher = Db::table('xsc_foreign_teachers')->where(['id'=>$input['ids']])->find();
                 if($teacher['follow_id']!=session('admin.id')){
                     $this->error('只有超级管理员和follow-up的人才能修改！');
                 }
