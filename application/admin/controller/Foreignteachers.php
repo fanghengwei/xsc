@@ -93,6 +93,14 @@ class Foreignteachers extends Backend
             $this->request->filter(['trim']);
             $input= $this->request->param();
             if(empty($input['ids']) || !is_numeric($input['ids'])) TEA(__('Parameter %s is not valid', 'ids'));
+
+            //权限验证
+            if(session('admin.group')!=1){
+                $teacher = $this->model->get(['id'=>$input['ids']]);
+                if($teacher['follow_id']!=session('admin.id')){
+                    $this->error('只有超级管理员和follow-up的人才能修改！');
+                }
+            }
             //呼叫M层进行处理
             $this->model->change($input);
             $this->success('success');

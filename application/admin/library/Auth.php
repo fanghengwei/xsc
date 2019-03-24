@@ -7,6 +7,7 @@ use fast\Random;
 use fast\Tree;
 use think\Config;
 use think\Cookie;
+use think\Db;
 use think\Request;
 use think\Session;
 
@@ -61,6 +62,14 @@ class Auth extends \fast\Auth
         $admin->logintime = time();
         $admin->token = Random::uuid();
         $admin->save();
+
+        $group = Db::table('xsc_auth_group_access')->where(['uid'=>$admin['id']])->order('group_id')->find();
+        if($group){
+            $admin->group = $group['group_id'];
+        }else{
+            $admin->group = 0;
+        }
+
         Session::set("admin", $admin->toArray());
         $this->keeplogin($keeptime);
         return true;
