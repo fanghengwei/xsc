@@ -121,4 +121,19 @@ class Foreignteachers extends Backend
         }
         return $this->view->fetch();
     }
+
+    public function show_follow(){
+        if ($this->request->isPost()) {
+            $this->model->where(['id'=>input('id')])->update(['follow_up_status'=>input('status'),'remarks'=>input('remarks')]);
+
+            $teacher = $this->model->get(['id'=>input('ids')]);
+            $this->assign('teacher',$teacher);
+            $this->assign('key',$teacher['follow_up_status']);
+        }else{
+            $teacher = $this->model->get(['id'=>input('ids')]);
+            $this->assign('teacher',$teacher);
+            $this->assign('key',$teacher['follow_up_status']);
+        }
+        return $this->view->fetch();
+    }
 }

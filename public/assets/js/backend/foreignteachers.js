@@ -41,11 +41,11 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                             buttons: [
                                 {
                                     name: 'detail',
-                                    text: '详情',
-                                    title: '详情',
+                                    text: 'Follow-up',
+                                    title: 'Follow-up',
                                     icon: 'fa fa-list',
                                     classname: 'btn btn-xs btn-primary btn-dialog',
-                                    url: 'wechatmessage/reply/show_detail'
+                                    url: '/admin/foreignteachers/show_follow'
                                 }
                             ], formatter: Table.api.formatter.operate,operate:false},
 

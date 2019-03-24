@@ -63,7 +63,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Nationality')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-nationality" data-rule="required" class="form-control selectpicker" name="row[nationality]">
                 {foreach name="nationalityList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
@@ -81,7 +81,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Degree')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-degree" data-rule="required" class="form-control selectpicker" name="row[degree]">
                 {foreach name="degreeList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
@@ -93,7 +93,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Certificate')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-certificate" class="form-control selectpicker" multiple="" name="row[certificate][]">
                 {foreach name="certificateList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
@@ -105,10 +105,10 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Visa_status')}:</label>
         <div class="col-xs-12 col-sm-8">
-            
+
             <div class="radio">
             {foreach name="visaStatusList" item="vo"}
-            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="Yes"}checked{/in} /> {$vo}</label> 
+            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="Yes"}checked{/in} /> {$vo}</label>
             {/foreach}
             </div>
 
@@ -129,7 +129,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Chinese')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-chinese" data-rule="required" class="form-control selectpicker" name="row[chinese]">
                 {foreach name="chineseList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
@@ -153,7 +153,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Company_type')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-company_type" data-rule="required" class="form-control selectpicker" name="row[company_type]">
                 {foreach name="companyTypeList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
@@ -165,7 +165,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Credit_score')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
+
             <select  id="c-credit_score" data-rule="required" class="form-control selectpicker" name="row[credit_score]">
                 {foreach name="creditScoreList" item="vo"}
                     <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
