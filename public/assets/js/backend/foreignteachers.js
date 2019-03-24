@@ -24,7 +24,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     [
                         {checkbox: true},
                         {field: 'name', title: __('Name')},
-                        {field: 'admin.nickname', title: __('Recorder')},
+                        {field: 'admin.nickname', title: __('Recorder'),searchList:Config.admin_list},
                         {field: 'follow.nickname', operate:false,title: __('Follow up person')},
                         {field: 'type', title: __('Type'), searchList: {"Public":__('Public'),"Private":__('Private')}, formatter: Table.api.formatter.normal},
                         {field: 'working_status', title: __('Working_status'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.status},
@@ -32,25 +32,40 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'expected_city_1', title: __('Expected city'),formatter: Controller.api.expected_city},
                         {field: 'expected_salary',  operate:false,title: __('Expected_salary')},
                         {field: 'company_type', title: __('Company_type'), searchList: {"Public school":__('Public school'),"Private school":__('Private school'),"Kindergarten":__('Kindergarten'),"International school":__('International school'),"University":__('University'),"Adults training school":__('Adults training school'),"Kids training school":__('Kids training school'),"Enterprises":__('Enterprises'),"Others":__('Others')}, formatter: Table.api.formatter.normal},
-                        {field: 'degree', title: __('Degree'), searchList: {"High school or below":__('High school or below'),"College":__('College'),"Bachelor":__('Bachelor'),"Master":__('Master'),"Doctor":__('Doctor')}, formatter: Table.api.formatter.normal},
+                        {field: 'degree',operate:false, title: __('Degree'), searchList: {"High school or below":__('High school or below'),"College":__('College'),"Bachelor":__('Bachelor'),"Master":__('Master'),"Doctor":__('Doctor')}, formatter: Table.api.formatter.normal},
                         {field: 'arriving_time', title: __('Arriving_time'), operate:'RANGE', addclass:'datetimerange'},
                         {field: 'follow_up_status', title: __('Follow_up_status'), searchList: {"Interviewing":__('Interviewing'),"Signed":__('Signed'),"Visa processing":__('Visa processing'),"Arrived":__('Arrived'),"Agent fee paid":__('Agent fee paid'),"Failed":__('Failed')}, formatter: Table.api.formatter.status},
-                        {field: 'operate', title: 'Operation', table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate},
+
+                        //操作
+                        {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate,
+                            buttons: [
+                                {
+                                    name: 'detail',
+                                    text: '详情',
+                                    title: '详情',
+                                    icon: 'fa fa-list',
+                                    classname: 'btn btn-xs btn-primary btn-dialog',
+                                    url: 'wechatmessage/reply/show_detail'
+                                }
+                            ], formatter: Table.api.formatter.operate,operate:false},
+
+
+
 
                         //默认不显示的
-                        {field: 'contact_information',operate:false, title: __('Contact_information')},
-                        {field: 'gender',operate:false, title: __('Gender'), searchList: {"Female":__('Female'),"Male":__('Male')}, formatter: Table.api.formatter.normal},
-                        {field: 'age', operate:false,title: __('Age')},
-                        {field: 'resource',operate:false, title: __('Resource')},
-                        {field: 'passport',operate:false, title: __('Passport')},
-                        {field: 'degree',operate:false, title: __('Degree'), searchList: {"High school or below":__('High school or below'),"College":__('College'),"Bachelor Master":__('Bachelor master'),"Doctor":__('Doctor'),"":__('')}, formatter: Table.api.formatter.normal},
-                        {field: 'certificate',operate:false, title: __('Certificate'), searchList: {"TEFL":__('Tefl'),"Teacher certificate":__('Teacher certificate'),"Others":__('Others'),"None":__('None')}, operate:'FIND_IN_SET', formatter: Table.api.formatter.label},
-                        {field: 'visa_status',operate:false, title: __('Visa_status'), searchList: {"Yes":__('Yes'),"No":__('No')}, formatter: Table.api.formatter.status},
-                        {field: 'chinese',operate:false, title: __('Chinese'), searchList: {"HSK 1":__('Hsk 1'),"HSK 2":__('Hsk 2'),"HSK 3":__('Hsk 3'),"HSK 4":__('Hsk 4'),"HSK 5":__('Hsk 5'),"HSK 6":__('Hsk 6'),"None":__('None')}, formatter: Table.api.formatter.normal},
-                        {field: 'credit_score',operate:false, title: __('Credit_score'), searchList: {"0 Ponint":__('0 ponint'),"1 Ponint":__('1 ponint'),"2 Ponints":__('2 ponints'),"3 Ponints":__('3 ponints'),"4 Ponints":__('4 ponints'),"5 Ponints":__('5 ponints')}, formatter: Table.api.formatter.normal},
-                        {field: 'attachment_files',operate:false, title: __('Attachment_files')},
-                        {field: 'create_time', operate:false,title: __('Create_time'), operate:'RANGE', addclass:'datetimerange'},
-                        {field: 'update_time', operate:false,title: __('Update_time'), operate:'RANGE', addclass:'datetimerange'},
+                        {field: 'contact_information',visible:false,operate:false, title: __('Contact_information')},
+                        {field: 'gender',visible:false,operate:false, title: __('Gender'), searchList: {"Female":__('Female'),"Male":__('Male')}, formatter: Table.api.formatter.normal},
+                        {field: 'age', visible:false,operate:false,title: __('Age')},
+                        {field: 'resource',visible:false,operate:false, title: __('Resource')},
+                        {field: 'passport',visible:false,operate:false, title: __('Passport')},
+                        {field: 'degree',visible:false,operate:false, title: __('Degree'), searchList: {"High school or below":__('High school or below'),"College":__('College'),"Bachelor":__('Bachelor'),"Master":__('Master'),"Doctor":__('Doctor')}, formatter: Table.api.formatter.normal},
+                        {field: 'certificate',visible:false,operate:false, title: __('Certificate'), searchList: {"TEFL":__('Tefl'),"Teacher certificate":__('Teacher certificate'),"Others":__('Others'),"None":__('None')}, formatter: Table.api.formatter.label},
+                        {field: 'visa_status',visible:false,operate:false, title: __('Visa_status'), searchList: {"Yes":__('Yes'),"No":__('No')}, formatter: Table.api.formatter.status},
+                        {field: 'chinese',visible:false,operate:false, title: __('Chinese'), searchList: {"HSK 1":__('Hsk 1'),"HSK 2":__('Hsk 2'),"HSK 3":__('Hsk 3'),"HSK 4":__('Hsk 4'),"HSK 5":__('Hsk 5'),"HSK 6":__('Hsk 6'),"None":__('None')}, formatter: Table.api.formatter.normal},
+                        {field: 'credit_score',visible:false,operate:false, title: __('Credit_score'), searchList: {"0 Ponint":__('0 ponint'),"1 Ponint":__('1 ponint'),"2 Ponints":__('2 ponints'),"3 Ponints":__('3 ponints'),"4 Ponints":__('4 ponints'),"5 Ponints":__('5 ponints')}, formatter: Table.api.formatter.normal},
+                        {field: 'attachment_files',visible:false,operate:false, title: __('Attachment_files')},
+                        {field: 'create_time',operate:false, visible:false,title: __('Create_time'), addclass:'datetimerange'},
+                        {field: 'update_time', visible:false,operate:false,title: __('Update_time'),  addclass:'datetimerange'},
                     ]
                 ]
             });
@@ -69,7 +84,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 Form.api.bindevent($("form[role=form]"));
             },
             expected_city: function (value, row, index) {
-                return row.expected_city_1+' '+row.expected_city_2;
+                return row.city1.province+' '+row.city2.city;
             }
         }
     };

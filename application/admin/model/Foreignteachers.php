@@ -192,4 +192,14 @@ class Foreignteachers extends Model
     {
         return $this->belongsTo('Follow', 'follow_id', 'id', [], 'LEFT')->setEagerlyType(0);
     }
+
+    public function city1()
+    {
+        return $this->belongsTo('Areas', 'expected_city_1', 'code', [], 'LEFT')->setEagerlyType(0);
+    }
+
+    public function city2()
+    {
+        return $this->belongsTo('Areas', 'expected_city_2', 'code', [], 'LEFT')->setEagerlyType(0);
+    }
 }

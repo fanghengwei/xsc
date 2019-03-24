@@ -2,6 +2,7 @@
 
 namespace app\admin\controller;
 
+use app\admin\model\Admin;
 use app\common\controller\Backend;
 
 /**
@@ -22,6 +23,11 @@ class Foreignteachers extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\Foreignteachers;
+
+        $AdminModel = new Admin();
+        $admin_list = $AdminModel->select();
+        $this->assignconfig('admin_list',$admin_list);
+
         $this->view->assign("workingStatusList", $this->model->getWorkingStatusList());
         $this->view->assign("genderList", $this->model->getGenderList());
         $this->view->assign("typeList", $this->model->getTypeList());
@@ -60,20 +66,19 @@ class Foreignteachers extends Backend
             }
             list($where, $sort, $order, $offset, $limit) = $this->buildparams();
             $total = $this->model
-                    ->with(['admin','follow'])
+                    ->with(['admin','follow','city1','city2'])
                     ->where($where)
                     ->order($sort, $order)
                     ->count();
 
             $list = $this->model
-                    ->with(['admin','follow'])
+                    ->with(['admin','follow','city1','city2'])
                     ->where($where)
                     ->order($sort, $order)
                     ->limit($offset, $limit)
                     ->select();
 
             foreach ($list as $row) {
-                
                 
             }
             $list = collection($list)->toArray();
