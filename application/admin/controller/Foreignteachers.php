@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\Admin;
+use app\admin\model\Foreignteachersblacklist;
 use app\common\controller\Backend;
 use think\Db;
 
@@ -26,6 +27,7 @@ class Foreignteachers extends Backend
      */
     protected $noNeedRight = [
         'show_follow',
+        'add_blacklist',
     ];
 
     public function _initialize()
@@ -93,6 +95,38 @@ class Foreignteachers extends Backend
         $this->view->assign("teacher", $row);
         $this->view->assign("key", $row['follow_up_status']);
         return $this->view->fetch();
+    }
+
+    public function add_blacklist($ids = NULL){
+        //过滤/获取/id判断/验证参数
+        $this->request->filter(['trim']);
+        $input= $this->request->param();
+        if(empty($input['ids']) || !is_numeric($input['ids'])) TEA(__('Parameter %s is not valid', 'ids'));
+        //呼叫M层进行处理
+        $teacher = Db::table('xsc_foreign_teachers')->where(['id'=>$ids])->find();
+        if($teacher){
+            $data = [
+                'name'=>$teacher['name'],
+                'nationality'=>$teacher['nationality'],
+                'passport_no'=>$teacher['passport'],
+                'contact_information'=>$teacher['contact_information'],
+                'reporter'=>1,
+                'creater_id'=>$teacher['recorder_id'],
+                'contace_name'=>1
+            ];
+            $Foreignteachersblacklist = new Foreignteachersblacklist();
+            if(Db::table('xsc_foreign_teachers_black_list')->where(['passport_no'=>$teacher['passport']])->find()){
+                $this->error('护照号重复');
+            }
+            $result = $Foreignteachersblacklist->insertGetId($data);
+            if($result){
+                $this->success('添加成功');
+            }else{
+                $this->error('添加失败');
+            }
+        }else{
+            $this->success('查无此teacher');
+        }
     }
 
     //region  改

@@ -41,6 +41,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
 
                         //操作
                         { field: 'follow', title:'Follow', table: table, operate:false, formatter: Controller.api.formatter.buttons },
+                        { field: 'blacklist', title:'BlackList', table: table, operate:false, formatter: Controller.api.formatter.blacklist },
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,operate:false
                         },
 
@@ -84,6 +85,20 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     }
                 });
             });
+            $(document).on('click','.btn-blacklist',function(){
+                var ids = ($(this).attr('pid'));
+                $.ajax({
+                    url:'/admin/foreignteachers/add_blacklist?ids='+ids,
+                    type:'get',
+                    success:function(res) {
+                        if(res.code==1){
+                        Toastr.success('添加成功');
+                        }else{
+                        Toastr.error(res.msg);
+                        }
+                    },
+                })
+            });
         },
         add: function () {
             Controller.api.bindevent();
@@ -98,6 +113,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             formatter:{
                 buttons: function (value,row,index) {
                     html = '<a href=javascript:; pid="'+row.id+'"class="btn btn-xs btn-info btn-follow" title="Follow-up"><i class="fa fa-commenting-o"> Follow-up</i></a>';
+                    return html;
+                },
+                blacklist: function (value,row,index) {
+                    html = '<a href=javascript:; pid="'+row.id+'"class="btn btn-xs btn-info btn-blacklist" title="Black-list"><i style="width: 72px;" class="fa fa-rocket fa-fw"> Black-list</i></a>';
                     return html;
                 },
             },

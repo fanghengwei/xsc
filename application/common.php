@@ -313,10 +313,10 @@ if (!function_exists('dd')) {
         $arr = func_get_args();
         foreach ($arr as $_arr) {
             echo "<pre>";
-            var_dump($_arr);
+            print_r($_arr);
             echo "</pre>";
         }
-        die(1);
+        die();
     }
 }
 
