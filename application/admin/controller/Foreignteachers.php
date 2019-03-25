@@ -106,8 +106,8 @@ class Foreignteachers extends Backend
             //权限验证
             if(session('admin.group')!=1){
                 $teacher = Db::table('xsc_foreign_teachers')->where(['id'=>$input['ids']])->find();
-                if($teacher['follow_id']!=session('admin.id')){
-                    $this->error('只有超级管理员和follow-up的人才能修改！');
+                if($teacher['recorder_id']!=session('admin.id')){
+                    $this->error('只有超级管理员和创建人才能修改！');
                 }
             }
             //呼叫M层进行处理
