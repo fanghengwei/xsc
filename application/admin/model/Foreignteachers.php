@@ -307,6 +307,7 @@ class Foreignteachers extends Model
             'follow_id'=>$user->id,
             'follow_name'=>$name,
             'update_time' => date('Y-m-d H:i:s',time()),
+            'type' => 'Private',
         ]);
         if($upd===false)  TEA('field');
     }
