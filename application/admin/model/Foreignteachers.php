@@ -218,7 +218,11 @@ class Foreignteachers extends Model
 
         foreach ($list as &$val) {
             $city1 = Db::table(config('alias.areas'))->field('province,city')->where('code',$val['expected_city_1'])->select();
-            $val['expected_city_1'] = $city1[0]['province'].' '.$city1[0]['city'];
+            if($city1){
+                $val['expected_city_1'] = $city1[0]['province'].' '.$city1[0]['city'];
+            }else{
+                $val['expected_city_1'] = '';
+            }
         }
         return ['total'=>$total,'rows'=>$list];
     }
