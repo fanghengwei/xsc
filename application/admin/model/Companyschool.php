@@ -114,6 +114,8 @@ class Companyschool extends Model
                 ->where("id",$v['creater_id'])
                 ->find();
             $v['username'] = $username['nickname'];
+            $v['salsary_rang'] = $v['salsary_rang_low'].'-'.$v['salsary_rang_high'];
+
         }
 
         return ['total'=>$total,'rows'=>$list];

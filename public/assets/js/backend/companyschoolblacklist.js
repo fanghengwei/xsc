@@ -29,16 +29,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {checkbox: true},
                         {field: 'id', title: __('Id'),visible:false,operate:false},
                         {field: 'name', title: __('Name')},
-                        {field: 'contact_name', title: __('Contact_name'),operate:false},
-                        {field: 'contace_information', title: __('Contace_information'),operate:false},
+                        {field: 'contact_name', title: __('Contact Name'),operate:false},
+                        {field: 'contace_information', title: __('Contace Information'),operate:false},
                         {field: 'reporter', title: __('Reporter')},
                         {field: 'reason', title: __('Reason'),operate:false},
                         {field: 'recorder', title: __('Recorder')},
-                        {field: 'create_time', title: __('Create_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,operate:false},
-                        {field: 'update_time', title: __('Update_time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,visible:false,operate:false},
+                        {field: 'create_time', title: __('Create Time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,operate:false},
+                        {field: 'update_time', title: __('Update Time'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime,visible:false,operate:false},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
-                ]
+                ]T
             });
 
             // 为表格绑定事件
