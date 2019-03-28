@@ -92,9 +92,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     type:'get',
                     success:function(res) {
                         if(res.code==1){
-                        Toastr.success('添加成功');
+                            Toastr.success('添加成功');
                         }else{
-                        Toastr.error(res.msg);
+                            Toastr.error(res.msg);
                         }
                     },
                 })

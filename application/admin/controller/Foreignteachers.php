@@ -28,6 +28,7 @@ class Foreignteachers extends Backend
     protected $noNeedRight = [
         'show_follow',
         'add_blacklist',
+        'getCityList',
     ];
 
     public function _initialize()
@@ -76,7 +77,24 @@ class Foreignteachers extends Backend
             $this->success('success');
         }
         //返回界面
+
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_city_1_list',$expected_city_1_list);
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
+        $this->assign('expected_city_2_list',$expected_city_2_list);
         return $this->view->fetch();
+    }
+
+    public function getCityList(){
+        $html ='';
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>input('pid')])->order('code')->select();
+        if($expected_city_2_list){
+            foreach ($expected_city_2_list as $city){
+                $html .= "<option value='{$city['code']}'>{$city['city']}</option>";
+            }
+        }
+        $html .='';
+        return $html;
     }
 
     public function show_follow($ids = NULL){
