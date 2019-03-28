@@ -170,6 +170,12 @@ class Foreignteachers extends Backend
         $row=$this->model->getOne($ids);
         if(empty($row)) $this->error('Not found');
         $this->view->assign("row", $row);
+
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_city_1_list',$expected_city_1_list);
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>$row['expected_city_1']])->order('code')->select();
+        $this->assign('expected_city_2_list',$expected_city_2_list);
+
         return $this->view->fetch();
     }
     //endregion
