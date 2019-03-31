@@ -45,7 +45,7 @@ class Foreignteachers extends Model
     //region  基础
     public function getWorkingStatusList()
     {
-        return ['No' => __('No'),'Yes' => __('Yes')];
+        return ['Under contract' => __('Under contract'),'Looking for job now' => __('Looking for job now'),'Wait-and-see' => __('Wait-and-see')];
     }     
 
     public function getGenderList()

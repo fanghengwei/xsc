@@ -13,14 +13,14 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Working_status')}:</label>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Working status')}:</label>
         <div class="col-xs-12 col-sm-8">
 
-            <div class="radio">
+            <select  id="c-workingstatus" data-rule="required" class="form-control selectpicker" name="row[working_status]">
                 {foreach name="workingStatusList" item="vo"}
-                <label for="row[working_status]-{$key}"><input id="row[working_status]-{$key}" name="row[working_status]" type="radio" value="{$key}" {in name="key" value="No"}checked{/in} /> {$vo}</label>
+                <option value="{$key}" {in name="key" value=""}selected{/in}>{$vo}</option>
                 {/foreach}
-            </div>
+            </select>
 
         </div>
     </div>
