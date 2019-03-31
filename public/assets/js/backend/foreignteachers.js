@@ -78,6 +78,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 });
             });
             $(document).on('click','.btn-blacklist',function(){
+                if(!confirm('Add to blacklist？')){return 0;}
                 var ids = ($(this).attr('pid'));
                 $.ajax({
                     url:'/admin/foreignteachers/add_blacklist?ids='+ids,
