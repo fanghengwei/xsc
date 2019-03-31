@@ -75,7 +75,7 @@ class Foreignteachers extends Model
 
     public function getVisaStatusList()
     {
-        return ['Yes' => __('Yes'),'No' => __('No')];
+        return ['Working Visa' => __('Working Visa'),'Tourist Visa' => __('Tourist Visa'),'Family Visa' => __('Family Visa'),'Student Visa' => __('Student Visa'),'Business Visa' => __('Business Visa'),'Permenant Visa' => __('Permenant Visa'),'Other Visa' => __('Other Visa')];
     }     
 
     public function getChineseList()
