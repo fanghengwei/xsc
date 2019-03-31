@@ -136,7 +136,7 @@ class Foreignteachers extends Backend
             ];
             $Foreignteachersblacklist = new Foreignteachersblacklist();
             if(Db::table('xsc_foreign_teachers_black_list')->where(['passport_no'=>$teacher['passport']])->find()){
-                $this->error('护照号重复');
+                $this->error('已加入过黑名单！');
             }
             $result = $Foreignteachersblacklist->insertGetId($data);
             if($result){
