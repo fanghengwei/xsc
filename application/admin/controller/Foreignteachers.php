@@ -78,10 +78,12 @@ class Foreignteachers extends Backend
         }
         //返回界面
 
-        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $expected_province_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_province_1_list',$expected_province_1_list);
+        $this->assign('expected_province_2_list',$expected_province_1_list);
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
         $this->assign('expected_city_1_list',$expected_city_1_list);
-        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
-        $this->assign('expected_city_2_list',$expected_city_2_list);
+        $this->assign('expected_city_2_list',$expected_city_1_list);
         return $this->view->fetch();
     }
 
@@ -171,11 +173,21 @@ class Foreignteachers extends Backend
         if(empty($row)) $this->error('Not found');
         $this->view->assign("row", $row);
 
-        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
-        $this->assign('expected_city_1_list',$expected_city_1_list);
-        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>$row['expected_city_1']])->order('code')->select();
-        $this->assign('expected_city_2_list',$expected_city_2_list);
+        $expected_province_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_province_1_list',$expected_province_1_list);
+        $this->assign('expected_province_2_list',$expected_province_1_list);
 
+        $pid1_arr = Db::table('xsc_areas')->where(['code'=>$row['expected_city_1']])->find();
+        $pid1 = $pid1_arr['pid'];
+        $this->assign('pid1',$pid1);
+        $pid2_arr = Db::table('xsc_areas')->where(['code'=>$row['expected_city_2']])->find();
+        $pid2 = $pid2_arr['pid'];
+        $this->assign('pid2',$pid2);
+
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>$pid1])->order('code')->select();
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>$pid2])->order('code')->select();
+        $this->assign('expected_city_1_list',$expected_city_1_list);
+        $this->assign('expected_city_2_list',$expected_city_2_list);
         return $this->view->fetch();
     }
     //endregion

@@ -102,7 +102,7 @@
             
             <div class="radio">
             {foreach name="visaStatusList" item="vo"}
-            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="$row.visa_status"}checked{/in} /> {$vo}</label> 
+            <label for="row[visia_status]-{$key}"><input id="row[visia_status]-{$key}" name="row[visia_status]" type="radio" value="{$key}" {in name="key" value="$row.visia_status"}checked{/in} /> {$vo}</label> 
             {/foreach}
             </div>
 
@@ -134,20 +134,34 @@
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_1')}:</label>
-        <div class="col-xs-12 col-sm-8">
-            <select  id="c-expected_city_1" data-rule="required" class="form-control selectpicker" name="row[expected_city_1]">
+        <div class="col-xs-6 col-sm-4">
+            <select  id="c-expected_province_1" data-rule="required" class="form-control selectpicker">
+                {foreach name="expected_province_1_list" item="vo"}
+                <option value="{$vo['code']}" {in name="$vo['code']" value="$pid1"}selected{/in}>{$vo['province']}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="col-xs-6 col-sm-4">
+            <select  id="c-expected_city_1" data-rule="required" class="form-control" name="row[expected_city_1]">
                 {foreach name="expected_city_1_list" item="vo"}
-                <option value="{$vo['code']}" {in name="$vo['code']" value="$row.expected_city_1"}selected{/in}>{$vo['province']}</option>
+                <option value="{$vo['code']}" {in name="$vo['code']" value="$row.expected_city_1"}selected{/in}>{$vo['city']}</option>
                 {/foreach}
             </select>
         </div>
     </div>
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Expected_city_2')}:</label>
-        <div class="col-xs-12 col-sm-8">
+        <div class="col-xs-6 col-sm-4">
+            <select  id="c-expected_province_2" data-rule="required" class="form-control selectpicker">
+                {foreach name="expected_province_2_list" item="vo"}
+                <option value="{$vo['code']}" {in name="$vo['code']" value="$pid2"}selected{/in}>{$vo['province']}</option>
+                {/foreach}
+            </select>
+        </div>
+        <div class="col-xs-6 col-sm-4">
             <select  id="c-expected_city_2" data-rule="required" class="form-control" name="row[expected_city_2]">
                 {foreach name="expected_city_2_list" item="vo"}
-                <option value="{$vo['code']}"{in name="$vo['code']" value="$row.expected_city_2"}selected{/in}>{$vo['city']}</option>
+                <option value="{$vo['code']}" {in name="$vo['code']" value="$row.expected_city_2"}selected{/in}>{$vo['city']}</option>
                 {/foreach}
             </select>
         </div>
@@ -219,14 +233,24 @@
 
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
-    $("#c-expected_city_1").change(function () {
-        var pid = $("#c-expected_city_1").val();
-        $.ajax({
-            url:'/admin/foreignteachers/getCityList?pid='+pid,
-            type:'post',
-            success:function(res) {
-                $("#c-expected_city_2").html(res);
-            },
-        })
-    });
+        $("#c-expected_province_1").change(function () {
+            var pid = $("#c-expected_province_1").val();
+            $.ajax({
+                url:'/admin/foreignteachers/getCityList?pid='+pid,
+                type:'post',
+                success:function(res) {
+                    $("#c-expected_city_1").html(res);
+                },
+            })
+        });
+        $("#c-expected_province_2").change(function () {
+            var pid = $("#c-expected_province_2").val();
+            $.ajax({
+                url:'/admin/foreignteachers/getCityList?pid='+pid,
+                type:'post',
+                success:function(res) {
+                    $("#c-expected_city_2").html(res);
+                },
+            })
+        });
 </script>
