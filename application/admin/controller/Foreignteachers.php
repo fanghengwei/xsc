@@ -81,7 +81,7 @@ class Foreignteachers extends Backend
         $expected_province_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
         $this->assign('expected_province_1_list',$expected_province_1_list);
         $this->assign('expected_province_2_list',$expected_province_1_list);
-        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
         $this->assign('expected_city_1_list',$expected_city_1_list);
         $this->assign('expected_city_2_list',$expected_city_1_list);
         return $this->view->fetch();

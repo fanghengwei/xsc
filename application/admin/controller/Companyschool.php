@@ -75,10 +75,11 @@ class Companyschool extends Backend
             $this->model->add($input);
             $this->success('success');
         }
+        $expected_province_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_province_1_list',$expected_province_1_list);
         $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
         $this->assign('expected_city_1_list',$expected_city_1_list);
-        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
-        $this->assign('expected_city_2_list',$expected_city_2_list);
+        
         //返回界面
         return $this->view->fetch();
     }
@@ -140,6 +141,17 @@ class Companyschool extends Backend
         $row=$this->model->getOne($ids);
         if(empty($row)) $this->error('Not found');
         $this->view->assign("row", $row);
+
+        $expected_province_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_province_1_list',$expected_province_1_list);
+
+        $pid1_arr = Db::table('xsc_areas')->where(['code'=>$row['city']])->find();
+        $pid1 = $pid1_arr['pid'];
+        $this->assign('pid1',$pid1);
+
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>$pid1])->order('code')->select();
+        $this->assign('expected_city_1_list',$expected_city_1_list);
+
         return $this->view->fetch();
     }
     //endregion

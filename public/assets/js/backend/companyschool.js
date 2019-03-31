@@ -54,75 +54,14 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             Table.api.bindevent(table);
         },
         add: function () {
-            // Controller.api.bindevent();
-            Controller.events.setCitySelect();
-            Controller.events.validators();
-            $(document).on('click','.btn.reset',function () {
-                $('.city-txt .empty').trigger('click');
-            })
+            Controller.api.bindevent();
         },
         edit: function () {
-            // Controller.api.bindevent();
-            Controller.events.setCitySelect();
-            Controller.events.validators();
-            $(document).on('click','.btn.reset',function () {
-                $('.city-txt .empty').trigger('click');
-            })
-        },
-        events: {
-            validators: function () {
-                $('#rule-form').validator({
-                    validClass: 'has-success',
-                    invalidClass: 'has-error',
-                    bindClassTo: '.form-group',
-                    formClass: 'n-default n-bootstrap',
-                    msgClass: 'n-right',
-                    stopOnError: true,
-                    valid: function (form) {
-                        var city_ids = [],city_ele = $('.city-select .city-info').find('span');
-                        city_ele.each(function (k,v) {
-                            city_ids.push($(v).attr('data-id'))
-                        });
-
-                        var data = {
-                            name: $(form).find('#c-name').val(),
-                            city_ids: JSON.stringify(city_ids),
-                            safe_link: $(form).find('#c-safe-link').val().trim(),
-                            invalid_link: $(form).find('#c-invalid-link').val().trim()
-                        }
-
-                        console.log(data.name.indexOf('<'));
-                        if(!city_ids.length){
-                            Toastr.info('please checkout city');
-                            return ;
-                        }
-
-                        if($(form).find('.layer-footer .btn').hasClass('add')){//添加提交
-                            Controller.api.submitRule(data)
-                        }else{//编辑提交
-                            var edit_id = Controller.events.getUrlIds(window.location.href);
-                            data.id = edit_id;
-                            Controller.api.editRule(data)
-                        }
-                        $(form).find('.layer-footer .btn').addClass('disabled')
-                    }
-                })
-            },
+            Controller.api.bindevent();
         },
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
-            },
-            getCitys: function (fn) {
-                AjaxClient.get({
-                    url: '/admin/companyschool/getAreas',
-                    success: function (res) {
-                        fn && typeof fn==='function'? fn(res):null;
-                    },
-                    fail: function (err) {
-
-                    }
-                })
             },
         }
     };
