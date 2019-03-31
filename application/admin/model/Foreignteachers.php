@@ -223,6 +223,9 @@ class Foreignteachers extends Model
             }else{
                 $val['expected_city_1'] = '';
             }
+
+            $country = Db::table(config('alias.country'))->where('id',$val['nationality'])->value('country');
+            $val['nationality'] = $country;
         }
         return ['total'=>$total,'rows'=>$list];
     }

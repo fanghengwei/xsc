@@ -3,6 +3,7 @@
 namespace app\admin\controller;
 
 use app\common\controller\Backend;
+use think\Db;
 use think\exception\HttpResponseException;
 use think\Response;
 
@@ -74,8 +75,24 @@ class Companyschool extends Backend
             $this->model->add($input);
             $this->success('success');
         }
+        $expected_city_1_list = Db::table('xsc_areas')->where(['pid'=>0])->order('code')->select();
+        $this->assign('expected_city_1_list',$expected_city_1_list);
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>110000])->order('code')->select();
+        $this->assign('expected_city_2_list',$expected_city_2_list);
         //返回界面
         return $this->view->fetch();
+    }
+
+    public function getCityList(){
+        $html ='';
+        $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>input('pid')])->order('code')->select();
+        if($expected_city_2_list){
+            foreach ($expected_city_2_list as $city){
+                $html .= "<option value='{$city['code']}'>{$city['city']}</option>";
+            }
+        }
+        $html .='';
+        return $html;
     }
     //endregion
 
@@ -126,4 +143,15 @@ class Companyschool extends Backend
         return $this->view->fetch();
     }
     //endregion
+
+    public function getCountry(){
+        if ($this->request->isAjax()) {
+            //过滤/获取参数
+            $this->request->filter(['trim']);
+            $input=$this->request->param();
+            //呼叫M层进行处理
+            $result=$this->model->getCountry($input);
+            return json($result);
+        }
+    }
 }

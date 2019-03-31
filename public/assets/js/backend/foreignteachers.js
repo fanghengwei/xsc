@@ -40,7 +40,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         { field: 'company_type', title: __('Company Type'), searchList: {"Public school":__('Public school'),"Private school":__('Private school'),"Kindergarten":__('Kindergarten'),"International school":__('International school'),"University":__('University'),"Adults training school":__('Adults training school'),"Kids training school":__('Kids training school'),"Enterprises":__('Enterprises'),"Others":__('Others')}, formatter: Table.api.formatter.normal},
                         { field: 'expected_salary',  operate:false,title: __('Expected Salary')},
 
-                        { field: 'visa_status',operate:false, title: __('Visa Status'), searchList: {"Yes":__('Yes'),"No":__('No')}, formatter: Table.api.formatter.status},
+                        { field: 'visia_status',operate:false, title: __('Visia Status'), searchList: {"Yes":__('Yes'),"No":__('No')}, formatter: Table.api.formatter.status},
                         { field: 'working_status', title: __('Working Status'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.status},
                         { field: 'arriving_time', title: __('Arriving Time'), operate:'RANGE', addclass:'datetimerange'},
                         { field: 'credit_score',visible:false,operate:false, title: __('Credit Score'), searchList: {"0 Ponint":__('0 ponint'),"1 Ponint":__('1 ponint'),"2 Ponints":__('2 ponints'),"3 Ponints":__('3 ponints'),"4 Ponints":__('4 ponints'),"5 Ponints":__('5 ponints')}, formatter: Table.api.formatter.normal},
@@ -62,7 +62,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             // 为表格绑定事件
             Table.api.bindevent(table);
 
-            //设置公众号
             $(document).on('click','.btn-follow',function(){
                 var ids = ($(this).attr('pid'));
                 layer.open({

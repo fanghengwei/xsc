@@ -16,6 +16,7 @@ return [
     //region  B
     //endregion
     //region  C
+    'country'=>'xsc_country',//
     'cs'=>'xsc_company_school',//
     'csbl'=>'xsc_company_school_black_list',//
     //endregion

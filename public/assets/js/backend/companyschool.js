@@ -1,4 +1,4 @@
-define(['jquery', 'bootstrap', 'backend', 'table', 'form','ajaxclient'], function ($, undefined, Backend, Table, Form,AjaxClient) {
+define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
 
     var Controller = {
         index: function () {
@@ -108,29 +108,6 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form','ajaxclient'], functio
                     }
                 })
             },
-            //初始化，获取城市数据，以及初始化的值
-            setCitySelect: function (val) {
-                Controller.api.getCitys(function (res) {
-                    var MulticitySelect = $('#city-multi').citySelect({
-                        dataJson: res.data, //数据源
-                        convert:false,
-                        multiSelect: true, //多选
-                        multiMaximum: 50, //可以选择的个数
-                        search: false, //关闭搜索
-                        placeholder: '',
-                        onInit: function() { //初始化回调
-                            // console.log(this)
-                        },
-                        onTabsAfter: function(target) { //切换tab回调
-                            // console.log(event)
-                        },
-                        onCallerAfter: function(target, values) { //选择后回调
-                            // console.log(JSON.stringify(values));
-                        }
-                    });
-                    val ? MulticitySelect.setCityVal(val.join(',')) : ''
-                })
-            }
         },
         api: {
             bindevent: function () {

@@ -63,13 +63,7 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Nationality')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
-            <select  id="c-nationality" data-rule="required" class="form-control selectpicker" name="row[nationality]">
-                {foreach name="nationalityList" item="vo"}
-                    <option value="{$key}" {in name="key" value="$row.nationality"}selected{/in}>{$vo}</option>
-                {/foreach}
-            </select>
-
+            <input   id="c-class_id" data-source="companyschool/getCountry" class="form-control selectpage" name="class_id" type="text" value="{$row.nationality}">
         </div>
     </div>
     <div class="form-group">

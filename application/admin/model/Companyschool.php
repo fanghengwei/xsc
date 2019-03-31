@@ -191,6 +191,41 @@ class Companyschool extends Model
             ->select();
         return $city;
     }
+
+    public function getCountry($input)
+    {
+        //提取参数
+        $word = $input['q_word']['0'] ?? '';//搜索关键词,客户端输入以空格分开,这里接收为数组中一个值,但是不建议多标签搜索
+        $page = $input['pageNumber'] ?? 1;//当前页
+        $pagesize = $input['pageSize'] ?? 10;//分页大小
+        $field =$input['showField'] ?? '';//显示的字段
+        $primarykey =$input['keyField'] ??  'id';//主键
+        //以防前端没有做限制性字数不停的发起模糊检索,所以后端做好限制,防止频刷
+//        if(!empty($word)){
+//            if(preg_match('/[\x{4e00}-\x{9fa5}]/u',$word)){
+//                if(mb_strlen($word,'utf8')<2)  return [];
+//            }else{
+//                if(mb_strlen($word,'utf8')<6)   return [];
+//            }
+//        }
+        //where条件 如果有primaryvalue,说明当前是初始化传值
+        $where=[];
+        if(!empty($word)) $where['country']=["like", "%".$word."%"];
+        //总数
+        $total =Db::table(config('alias.country'))->where($where)->count();
+        //列表
+        $list = [];
+        $datalist =Db::table(config('alias.country'))->where($where)->page($page,$pagesize)->field('id,country as name')->select();
+        foreach ($datalist as $index => $item) {
+            $list[] = [
+                $primarykey => isset($item[$primarykey]) ? $item[$primarykey] : '',
+                $field      => isset($item[$field]) ? $item[$field] : ''
+            ];
+        }
+        //这里一定要返回有list这个字段,total是可选的,如果total<=list的数量,则会隐藏分页按钮
+        return ['list' => $list, 'total' => $total];
+
+    }
     //endregion
 
     //region  增

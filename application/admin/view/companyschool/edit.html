@@ -122,3 +122,16 @@
         </div>
     </div>
 </form>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#c-expected_city_1").change(function () {
+        var pid = $("#c-expected_city_1").val();
+        $.ajax({
+            url:'/admin/foreignteachers/getCityList?pid='+pid,
+            type:'post',
+            success:function(res) {
+                $("#c-expected_city_2").html(res);
+            },
+        })
+    });
+</script>
