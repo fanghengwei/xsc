@@ -205,16 +205,43 @@ class Foreignteachers extends Model
     //region  查
     public function getList($input) {
         list($where, $sort, $order, $offset, $limit) = $this->check($input);
-        $total = Db::table($this->table)
-            ->where($where)
-            ->order($sort, $order)
-            ->count();
 
-        $list = Db::table($this->table)
-            ->where($where)
-            ->order($sort, $order)
-            ->limit($offset, $limit)
-            ->select();
+        //权限查看：方恒伟
+
+        $group = session('admin.group');
+        if($group==1){//管理员查看所有
+            $total = Db::table($this->table)
+                ->where($where)
+                ->order($sort, $order)
+                ->count();
+
+            $list = Db::table($this->table)
+                ->where($where)
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+        }else{//不是管理员
+            $total = Db::table($this->table)
+                ->where($where)
+                ->where(function($query){
+                    $query->where(['type'=>'Public'])->whereOr(function($query){
+                        $query->where(['type'=>'Private','recorder_id|follow_id'=>session('admin.id')]);
+                    });
+                })
+                ->order($sort, $order)
+                ->count();
+
+            $list = Db::table($this->table)
+                ->where($where)
+                ->where(function($query){
+                    $query->where(['type'=>'Public'])->whereOr(function($query){
+                        $query->where(['type'=>'Private','recorder_id|follow_id'=>session('admin.id')]);
+                    });
+                })
+                ->order($sort, $order)
+                ->limit($offset, $limit)
+                ->select();
+        }
 
         foreach ($list as &$val) {
             $city1 = Db::table(config('alias.areas'))->field('province,city')->where('code',$val['expected_city_1'])->select();
