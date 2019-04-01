@@ -302,7 +302,7 @@ class Foreignteachers extends Model
     public function ckeckfollow($id) {
         $row = Db::table(config('alias.follow'))
             ->where('follow_up_id', $id)
-            ->order('folloe_up_time','desc')
+            ->order('follow_up_time','desc')
             ->find();
         $user = Db::table(config('alias.admin'))->where('id',$row['follow_up_were'])->value('nickname');
         $row['follow_up_were'] = $user;
