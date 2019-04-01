@@ -356,7 +356,7 @@ class Foreignteachers extends Model
 
         $check = [
             'follow_up_were'=>$user->id,
-            'folloe_up_time'=>date('Y-m-d H:i:s',time()),
+            'follow_up_time'=>date('Y-m-d H:i:s',time()),
             'follow_up_status'=>$input['status'],
             'remarks'=>$input['remarks'],
             'follow_up_id'=>$input['ids']
