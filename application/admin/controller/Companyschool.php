@@ -26,6 +26,8 @@ class Companyschool extends Backend
      */
     protected $noNeedRight = [
         'getAreas',
+        'getCityList',
+        'getCountry',
     ];
 
     public function _initialize()
@@ -84,6 +86,13 @@ class Companyschool extends Backend
         return $this->view->fetch();
     }
 
+    /**
+     * 获取城市列表
+     * @return string
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function getCityList(){
         $html ='';
         $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>input('pid')])->order('code')->select();
@@ -94,6 +103,21 @@ class Companyschool extends Backend
         }
         $html .='';
         return $html;
+    }
+
+    /**
+     * 获取国家列表
+     * @return \think\response\Json
+     */
+    public function getCountry(){
+        if ($this->request->isAjax()) {
+            //过滤/获取参数
+            $this->request->filter(['trim']);
+            $input=$this->request->param();
+            //呼叫M层进行处理
+            $result=$this->model->getCountry($input);
+            return json($result);
+        }
     }
     //endregion
 
@@ -155,15 +179,4 @@ class Companyschool extends Backend
         return $this->view->fetch();
     }
     //endregion
-
-    public function getCountry(){
-        if ($this->request->isAjax()) {
-            //过滤/获取参数
-            $this->request->filter(['trim']);
-            $input=$this->request->param();
-            //呼叫M层进行处理
-            $result=$this->model->getCountry($input);
-            return json($result);
-        }
-    }
 }

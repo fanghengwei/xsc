@@ -29,6 +29,7 @@ class Foreignteachers extends Backend
         'show_follow',
         'add_blacklist',
         'getCityList',
+        'ckeckfollow',
     ];
 
     public function _initialize()
