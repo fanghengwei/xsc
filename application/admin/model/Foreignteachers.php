@@ -296,6 +296,9 @@ class Foreignteachers extends Model
         $row = Db::table($this->table)
             ->where('id',$ids)
             ->find();
+        $salarys = explode('~',$row['expected_salary']);
+        $row['expected_salary_low'] = $salarys[0];
+        $row['expected_salary_high'] = $salarys[1];
         return $row;
     }
 
@@ -321,8 +324,11 @@ class Foreignteachers extends Model
             'recorder_id' => $user->id,
             'create_time' => date('Y-m-d H:i:s',time()),
             'update_time' => date('Y-m-d H:i:s',time()),
+            'expected_salary' => $row['expected_salary_low'].'~'.$row['expected_salary_high'],
         ];
         $insert_data = array_merge($row,$data);
+        unset($insert_data['expected_salary_low']);
+        unset($insert_data['expected_salary_high']);
         $insert_id = Db::table($this->table)->insertGetId($insert_data);
         if(!$insert_id) TEA('field');
         return $insert_id;
@@ -335,8 +341,11 @@ class Foreignteachers extends Model
         //组装数据
         $data = [
             'update_time' => date('Y-m-d H:i:s',time()),
+            'expected_salary' => $insert['expected_salary_low'].'~'.$insert['expected_salary_high'],
         ];
         $insert = array_merge($insert,$data);
+        unset($insert['expected_salary_low']);
+        unset($insert['expected_salary_high']);
         $upd=Db::table($this->table)->where('id',$input['ids'])->update($insert);
         if($upd===false)  TEA('field');
 
