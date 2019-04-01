@@ -297,8 +297,8 @@ class Foreignteachers extends Model
             ->where('id',$ids)
             ->find();
         $salarys = explode('~',$row['expected_salary']);
-        $row['expected_salary_low'] = $salarys[0];
-        $row['expected_salary_high'] = $salarys[1];
+        $row['expected_salary_low'] = isset($salarys[0]) ? $salarys[0] : 0;
+        $row['expected_salary_high'] = isset($salarys[1]) ? $salarys[1] : 1;
         return $row;
     }
 
