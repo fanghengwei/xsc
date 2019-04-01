@@ -298,6 +298,16 @@ class Foreignteachers extends Model
             ->find();
         return $row;
     }
+
+    public function ckeckfollow($id) {
+        $row = Db::table(config('alias.follow'))
+            ->where('follow_up_id', $id)
+            ->order('folloe_up_time','desc')
+            ->find();
+        $user = Db::table(config('alias.admin'))->where('id',$row['follow_up_were'])->value('nickname');
+        $row['follow_up_were'] = $user;
+        return $row;
+    }
     //endregion
 
     //region  增
@@ -343,6 +353,16 @@ class Foreignteachers extends Model
             'update_time' => date('Y-m-d H:i:s',time()),
             'type' => 'Private',
         ]);
+
+        $check = [
+            'follow_up_were'=>$user->id,
+            'folloe_up_time'=>date('Y-m-d H:i:s',time()),
+            'follow_up_status'=>$input['status'],
+            'remarks'=>$input['remarks'],
+            'follow_up_id'=>$input['ids']
+        ];
+
+        Db::table(config('alias.follow'))->insert($check);
         if($upd===false)  TEA('field');
     }
     //endregion

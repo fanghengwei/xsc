@@ -25,6 +25,7 @@ return [
     //region  E
     //endregion
     //region  F
+    'follow' => 'xsc_follow',
     'ft' => 'xsc_foreign_teachers'
     //endregion
 ];

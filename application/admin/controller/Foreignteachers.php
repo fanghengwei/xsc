@@ -87,6 +87,13 @@ class Foreignteachers extends Backend
         return $this->view->fetch();
     }
 
+    /**
+     *  获取城市列表
+     * @return string
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function getCityList(){
         $html ='';
         $expected_city_2_list = Db::table('xsc_areas')->where(['pid'=>input('pid')])->order('code')->select();
@@ -99,6 +106,12 @@ class Foreignteachers extends Backend
         return $html;
     }
 
+    /**
+     * follow-up
+     * @param null $ids
+     * @return string
+     * @throws \think\Exception
+     */
     public function show_follow($ids = NULL){
         if ($this->request->isPost()) {
             //过滤/获取/id判断/验证参数
@@ -117,6 +130,13 @@ class Foreignteachers extends Backend
         return $this->view->fetch();
     }
 
+    /**
+     * 添加进黑名单
+     * @param null $ids
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public function add_blacklist($ids = NULL){
         //过滤/获取/id判断/验证参数
         $this->request->filter(['trim']);
@@ -147,6 +167,17 @@ class Foreignteachers extends Backend
         }else{
             $this->success('查无此teacher');
         }
+    }
+
+    public function ckeckfollow($ids){
+        if(!empty($ids)) {
+            $result=$this->model->ckeckfollow($ids);
+            $this->view->assign("row", $result);
+            $this->view->assign("id", $ids);
+            $this->assignconfig("id", $ids);
+            session('ids',$ids);
+        }
+        return $this->view->fetch();
     }
 
     //region  改
