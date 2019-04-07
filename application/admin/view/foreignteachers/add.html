@@ -102,7 +102,7 @@
             
             <div class="radio">
             {foreach name="visaStatusList" item="vo"}
-            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}"/> {$vo}</label> 
+            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" data-rule="required" /> {$vo}</label> 
             {/foreach}
             </div>
 
