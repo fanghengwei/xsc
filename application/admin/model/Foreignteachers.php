@@ -96,7 +96,12 @@ class Foreignteachers extends Model
     public function getFollowUpStatusList()
     {
         return ['Interviewing' => __('Interviewing'),'Signed' => __('Signed'),'Visa processing' => __('Visa processing'),'Arrived' => __('Arrived'),'Agent fee paid' => __('Agent fee paid'),'Failed' => __('Failed')];
-    }     
+    }
+
+    public function getHousingList()
+    {
+        return ['None' => __('None'),'Housing in Campus' => __('Housing in Campus'),'Apartment provided' => __('Apartment provided'),'Housing allowance' => __('Housing allowance')];
+    }
 
     public function getWorkingStatusTextAttr($value, $data)
     {        

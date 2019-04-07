@@ -51,6 +51,7 @@ class Foreignteachers extends Backend
         $this->view->assign("companyTypeList", $this->model->getCompanyTypeList());
         $this->view->assign("creditScoreList", $this->model->getCreditScoreList());
         $this->view->assign("followUpStatusList", $this->model->getFollowUpStatusList());
+        $this->view->assign("housingList", $this->model->getHousingList());
     }
 
     /**
