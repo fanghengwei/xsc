@@ -334,6 +334,7 @@ class Foreignteachers extends Model
         $insert_data = array_merge($row,$data);
         unset($insert_data['expected_salary_low']);
         unset($insert_data['expected_salary_high']);
+        $insert_data['certificate'] = implode(',',$insert_data['certificate']);
         $insert_id = Db::table($this->table)->insertGetId($insert_data);
         if(!$insert_id) TEA('field');
         return $insert_id;
@@ -351,6 +352,7 @@ class Foreignteachers extends Model
         $insert = array_merge($insert,$data);
         unset($insert['expected_salary_low']);
         unset($insert['expected_salary_high']);
+        $insert['certificate'] = implode(',',$insert['certificate']);
         $upd=Db::table($this->table)->where('id',$input['ids'])->update($insert);
         if($upd===false)  TEA('field');
 
