@@ -97,12 +97,12 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-xs-12 col-sm-2">{:__('Visa Status')}:</label>
+        <label class="control-label col-xs-12 col-sm-2">{:__('Visa_status')}:</label>
         <div class="col-xs-12 col-sm-8">
             
             <div class="radio">
             {foreach name="visaStatusList" item="vo"}
-            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="$row.visa_status"}checked{/in} data-rule="required" /> {$vo}</label> 
+            <label for="row[visa_status]-{$key}"><input id="row[visa_status]-{$key}" name="row[visa_status]" type="radio" value="{$key}" {in name="key" value="$row.visa_status"}checked{/in} /> {$vo}</label> 
             {/foreach}
             </div>
 
