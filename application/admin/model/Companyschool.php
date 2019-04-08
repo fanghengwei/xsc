@@ -113,7 +113,9 @@ class Companyschool extends Model
                 ->field('nickname')
                 ->where("id",$v['creater_id'])
                 ->find();
+            $city = Db::table(config('alias.areas'))->field('city')->where('code',$v['city'])->find();
             $v['username'] = $username['nickname'];
+            $v['city'] = $city['city'];
             $v['salsary_rang'] = $v['salsary_rang_low'].'-'.$v['salsary_rang_high'];
 
         }
