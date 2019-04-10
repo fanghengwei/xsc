@@ -26,6 +26,7 @@ return [
     //endregion
     //region  F
     'follow' => 'xsc_follow',
-    'ft' => 'xsc_foreign_teachers'
+    'ft' => 'xsc_foreign_teachers',
+    'ftbl' => 'xsc_foreign_teachers_black_list'
     //endregion
 ];

@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use think\Db;
 use think\Model;
 
 class Foreignteachersblacklist extends Model
@@ -22,6 +23,15 @@ class Foreignteachersblacklist extends Model
         'create_time_text',
         'update_time_text'
     ];
+
+    /**
+     * RetrieveClass constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        if(empty($this->table)) $this->table = config('alias.ftbl');
+    }
     
 
     
@@ -63,4 +73,47 @@ class Foreignteachersblacklist extends Model
     }
 
 
+    public function getList($input) {
+        list($where, $sort, $order, $offset, $limit) = $this->check($input);
+
+        $total = Db::table($this->table)
+            ->where($where)
+            ->order($sort, $order)
+            ->count();
+
+        $list = Db::table($this->table)
+            ->where($where)
+            ->order($sort, $order)
+            ->limit($offset, $limit)
+            ->select();
+
+        foreach ($list as &$v) {
+            $len = strlen($v['reason_for_blacklist']);
+            $v['reason_for_blacklist'] = substr($v['reason_for_blacklist'],0,60);
+            if ($len>20) {
+                $v['reason_for_blacklist'] .= '......';
+            }
+        }
+        return ['total'=>$total,'rows'=>$list];
+    }
+
+    public function check($input) {
+        $sort =$input['sort'] ?? 'id';
+        $order =$input['order'] ?? 'DESC';
+        $offset =$input['offset'] ?? 0;
+        $limit =$input['limit'] ?? 0;
+        $where = [];
+
+        if (isset($input['filter'])) {
+            $search = json_decode($input['filter']);
+            // name
+            if (!empty($search->name)) $where['name']= ['like','%'.addslashes($search->name).'%'];
+            // nationality
+            if (!empty($search->nationality)) $where['nationality']= ['=',addslashes($search->nationality)];
+            //reporter
+            if (!empty($search->reporter)) $where['reporter']= ['like','%'.addslashes($search->reporter).'%'];
+        }
+
+        return [$where, $sort, $order, $offset, $limit];
+    }
 }
