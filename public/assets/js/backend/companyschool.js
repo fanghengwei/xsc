@@ -36,6 +36,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'non_native_acceptable', title: __('Non-Native acceptable'), searchList: {"No":__('No'),"Yes":__('Yes')}, formatter: Table.api.formatter.normal},
                         {field: 'arriving_time', title: __('Arriving Time'), operate:'RANGE', addclass:'datetimerange',visible:false},
                         {field: 'vacancy', title: __('Vacancy No.'),operate:false},
+                        {field: 'job_title', title: __('Job Title'),operate:false},
                         {field: 'contact_name', title: __('Contact Name'),operate:false},
                         {field: 'phone', title: __('Phone'),operate:false},
                         {field: 'wechat', title: __('Wechat'),visible:false,operate:false},

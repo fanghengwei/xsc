@@ -68,10 +68,20 @@
     <div class="form-group">
         <label class="control-label col-xs-12 col-sm-2">{:__('Work-visa Provided')}:</label>
         <div class="col-xs-12 col-sm-8">
-                        
             <select  id="c-work_visa_provided" data-rule="required" class="form-control selectpicker" name="row[work_visa_provided]">
                 {foreach name="workVisaProvidedList" item="vo"}
                     <option value="{$key}" {in name="key" value="$row.work_visa_provided"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Job Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <select  id="c-job_title" data-rule="required" class="form-control selectpicker" name="row[job_title]">
+                {foreach name="jobTitle" item="vo"}
+                <option value="{$key}" {in name="key" value="$row.job_title"}selected{/in}>{$vo}</option>
                 {/foreach}
             </select>
 

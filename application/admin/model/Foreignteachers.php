@@ -46,7 +46,11 @@ class Foreignteachers extends Model
     public function getWorkingStatusList()
     {
         return ['Under contract' => __('Under contract'),'Looking for job now' => __('Looking for job now'),'Wait-and-see' => __('Wait-and-see')];
-    }     
+    }
+
+    public function getJobTitle() {
+        return ['Oral English Teacher' => __('Oral English Teacher'), 'History Teacher' => __('History Teacher'), 'Science Teacher' => __('Science Teacher'), 'Economics Teacher' => __('Economics Teacher'), 'Maths Teacher' => __('Maths Teacher'), 'Chemistry Teacher' => __('Chemistry Teacher'), 'Music Teacher' => __('Music Teacher'), 'Art Teacher' => __('Art Teacher'), 'PE teacher' => __('PE teacher'), 'Other Subject Teacher' => __('Other Subject Teacher'),];
+    }
 
     public function getGenderList()
     {

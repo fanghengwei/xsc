@@ -38,6 +38,7 @@ class Companyschool extends Backend
         $this->view->assign("workVisaProvidedList", $this->model->getWorkVisaProvidedList());
         $this->view->assign("nonNativeAcceptableList", $this->model->getNonNativeAcceptableList());
         $this->view->assign("housingList", $this->model->getHousingList());
+        $this->view->assign("jobTitle", $this->model->getJobTitle());
     }
     
     /**
