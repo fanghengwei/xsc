@@ -24,6 +24,10 @@ class Attachment extends Backend
         $this->model = model('Attachment');
     }
 
+    protected $noNeedRight = [
+        'select',
+    ];
+
     /**
      * 查看
      */
