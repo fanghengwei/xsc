@@ -6,19 +6,19 @@
                     <table class="table table-bordered">
                         <tbody><tr>
                             <td>Follow-up Were：</td>
-                            <td>{$row.follow_up_were}</td>
+                            <td>{$row.follow_up_were??''}</td>
                         </tr>
                         <tr>
                             <td>Follow-up Time：</td>
-                            <td>{$row.follow_up_time}</td>
+                            <td>{$row.follow_up_time??''}</td>
                         </tr>
                         <tr>
                             <td>Follow-up Status：</td>
-                            <td>{$row.follow_up_status}</td>
+                            <td>{$row.follow_up_status??''}</td>
                         </tr>
                         <tr>
                             <td>Remarks：</td>
-                            <td>{$row.remarks|htmlspecialchars}</td>
+                            <td>{$row.remarks?htmlspecialchars($row.remarks):''}</td>
                         </tr>
                         </tbody></table>
                 </div>
