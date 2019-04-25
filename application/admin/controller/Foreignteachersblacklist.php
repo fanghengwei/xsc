@@ -40,6 +40,23 @@ class Foreignteachersblacklist extends Backend
         return $this->view->fetch();
     }
 
+    public function edit($ids = NULL) {
+        if ($this->request->isPost()) {
+            //过滤/获取/id判断/验证参数
+            $this->request->filter(['trim']);
+            $input= $this->request->param();
+            if(empty($input['ids']) || !is_numeric($input['ids'])) TEA(__('Parameter %s is not valid', 'ids'));
+            //呼叫M层进行处理
+            $this->model->change($input);
+            $this->success('success');
+        }
+        //返回界面
+        $row=$this->model->getOne($ids);
+        if(empty($row)) $this->error('Not found');
+        $this->view->assign("row", $row);
+        return $this->view->fetch();
+    }
+
 
 
 }

@@ -116,4 +116,42 @@ class Foreignteachersblacklist extends Model
 
         return [$where, $sort, $order, $offset, $limit];
     }
+
+    /**
+     * 编辑时获取一条数据
+     * @param $ids
+     * @return array|false|\PDOStatement|string|Model
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @author xsc
+     * @date 2019-03-23 23:30:10
+     */
+    public function getOne($ids) {
+        $row = Db::table($this->table)
+            ->where('id',$ids)
+            ->find();
+        return $row;
+    }
+
+    //region  改
+    /**
+     * 修改数据
+     * @param array $input
+     * @return Model|void
+     * @author xsc
+     * @date 2019-03-23 23:35:13
+     */
+    public  function change($input) {
+        $insert = $input['row'];
+        //组装数据
+        $data = [
+            'update_time' => date('Y-m-d H:i:s',time()),
+        ];
+        $insert = array_merge($insert,$data);
+        $upd=Db::table($this->table)->where('id',$input['ids'])->update($insert);
+        if($upd===false)  TEA('field');
+
+    }
+    //endregion
 }
