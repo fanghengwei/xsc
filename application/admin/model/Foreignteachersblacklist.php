@@ -89,7 +89,7 @@ class Foreignteachersblacklist extends Model
 
         foreach ($list as &$v) {
             $len = strlen($v['reason_for_blacklist']);
-            $v['reason_for_blacklist'] = substr($v['reason_for_blacklist'],0,60);
+            $v['reason_for_blacklist'] = mb_substr($v['reason_for_blacklist'],0,20);
             if ($len>20) {
                 $v['reason_for_blacklist'] .= '......';
             }
