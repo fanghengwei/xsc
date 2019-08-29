@@ -87,13 +87,13 @@ class Foreignteachersblacklist extends Model
             ->limit($offset, $limit)
             ->select();
 
-        foreach ($list as &$v) {
-            $len = strlen($v['reason_for_blacklist']);
-            $v['reason_for_blacklist'] = mb_substr($v['reason_for_blacklist'],0,20);
-            if ($len>20) {
-                $v['reason_for_blacklist'] .= '......';
-            }
-        }
+//        foreach ($list as &$v) {
+//            $len = strlen($v['reason_for_blacklist']);
+//            $v['reason_for_blacklist'] = mb_substr($v['reason_for_blacklist'],0,20);
+//            if ($len>20) {
+//                $v['reason_for_blacklist'] .= '......';
+//            }
+//        }
         return ['total'=>$total,'rows'=>$list];
     }
 
