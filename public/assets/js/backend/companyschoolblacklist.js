@@ -30,7 +30,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'id', title: __('Id'),visible:false,operate:false},
                         {field: 'name', title: __('Name')},
                         {field: 'contact_name', title: __('Contact Name'),operate:false},
-                        {field: 'contace_information', title: __('Contace Information'),operate:false},
+                        {field: 'contace_information', title: 'Contact information',operate:false},
                         {field: 'reporter', title: __('Reporter')},
                         {field: 'reason', title: __('Reason'),operate:false},
                         {field: 'recorder', title: __('Recorder')},
