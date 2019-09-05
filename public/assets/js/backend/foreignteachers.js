@@ -54,6 +54,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         { field: 'follow_up_status', title: __('Follow-up Status'), searchList: {"Interviewing":__('Interviewing'),"Signed":__('Signed'),"Visa processing":__('Visa processing'),"Arrived":__('Arrived'),"Agent fee paid":__('Agent fee paid'),"Failed":__('Failed')}, formatter: Table.api.formatter.status},
                         { field: 'follow', title:'Follow', table: table, operate:false, formatter: Controller.api.formatter.buttons },
                         { field: 'blacklist', title:'BlackList', table: table, operate:false, formatter: Controller.api.formatter.blacklist },
+                        { field: 'remarks', title: __('Remarks')},
                         // { field: 'operate', title: __('Edit'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate,operate:false},
                         {
                             field: 'operate',
