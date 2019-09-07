@@ -54,6 +54,20 @@
             <textarea id="c-reason_for_blacklist" class="form-control " rows="5" name="row[reason_for_blacklist]" cols="50"></textarea>
         </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Attachment Files')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-attachment_files" data-rule="required" class="form-control" size="50" name="row[attachment_files]" type="text">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="plupload-attachment_files" class="btn btn-danger plupload" data-input-id="c-attachment_files" data-multiple="true" data-preview-id="p-attachment_files"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-attachment_files" class="btn btn-primary fachoose" data-input-id="c-attachment_files" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-attachment_files"></span>
+            </div>
+            <ul class="row list-inline plupload-preview" id="p-attachment_files"></ul>
+        </div>
+    </div>
     <div class="form-group layer-footer">
         <label class="control-label col-xs-12 col-sm-2"></label>
         <div class="col-xs-12 col-sm-8">
