@@ -50,7 +50,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         { field: 'attachment_files',visible:false,operate:false, title: __('Attachment Files')},
                         { field: 'contact_information',visible:false,operate:false, title: __('Contact Information')},
                         { field: 'recorder',visible:false, title: __('Recorder'),searchList:Config.admin_list},
-                        { field: 'follow_name', operate:false,title: __('Follow-up Person')},
+                        { field: 'follow_name',visible:false, operate:false,title: __('Follow-up Person')},
                         { field: 'follow_up_status', title: __('Follow-up Status'), searchList: {"Interviewing":__('Interviewing'),"Signed":__('Signed'),"Visa processing":__('Visa processing'),"Arrived":__('Arrived'),"Agent fee paid":__('Agent fee paid'),"Failed":__('Failed')}, formatter: Table.api.formatter.status},
                         { field: 'follow', title:'Follow', table: table, operate:false, formatter: Controller.api.formatter.buttons },
                         { field: 'blacklist', title:'BlackList', table: table, operate:false, formatter: Controller.api.formatter.blacklist },
