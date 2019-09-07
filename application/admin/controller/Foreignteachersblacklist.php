@@ -22,6 +22,7 @@ class Foreignteachersblacklist extends Backend
     {
         parent::_initialize();
         $this->model = new \app\admin\model\Foreignteachersblacklist;
+        $this->view->assign("genderList", $this->model->getGenderList());
         $this->view->assign("nationalityList", $this->model->getNationalityList());
     }
 
